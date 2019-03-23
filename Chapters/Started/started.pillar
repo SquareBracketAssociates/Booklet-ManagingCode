@@ -137,6 +137,14 @@ Figure *@RepairFirst* shows the action Create project meta-data and its explanat
 +PublishingMetaData.>file://figures/PublishingMetaData.png|width=75|label=PublishingMetaData+
 
 
++SavedMetaData.>file://figures/SavedMetaData.png|width=75|label=SavedMetaData+
+
+!!! Adding your package
+
++WithAPackage.>file://figures/WithAPackage.png|width=75|label=WithAPackage+
+
+
+
 !!! [Optional] Add a nice .gitignore file
 
 Iceberg manages automatically such files.
@@ -187,7 +195,10 @@ BaselineOfMyCoolProjectWithPharo >> baseline: spec
 			spec group: 'default' with: #('FileDialog') ]
 ]]]
 
+Once you have defined the baseline, you should add it to your project as shown in Figure *@WithBaseline*.
+And you should commit it and push your changes to your remote repository.
 
++With a Baseline.>file://figures/WithBaseline.png|width=75|label=WithBaseline+
 
 !!! Glimpse at the architecture
 
