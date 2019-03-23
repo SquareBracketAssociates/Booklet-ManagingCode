@@ -2,29 +2,34 @@
 
 In this chapter we explain how you can publish your project on github using Iceberg.
 We do not explain concepts like commit, push/pull, merging, or cloning.
-We thanks Peter Uhnak for his first blog on publishing Pharo code on Github.
+We thank Peter Uhnak for his first blog on publishing Pharo code on Github.
 
-!!! For the crazy fools
+As git is distributed versioning system, you need a local clone of the repository. 
+This is to this local repository that your changes will be commited to before being pushed to remote repositories.
+In general you commit to your local clone, and from there you push to github or other places.
+Iceberg will do all the operations and more for you.
+
+!!! For the impatient
 
 If you do not want to read anything, here is the executive summary.
 
 - Create a project on github or any git-based platform.
+- Configure Iceberg to use custom ssh keys
 - Open Iceberg.
 - Add a project (chose clone from ...).
-- Optionally, in the clone repository, create a directory named =='src'== on your file system using either the FileList or your command line.
+- Optionally, in the cloned repository, create a directory named ==src== on your file system using either the FileList or your command line.
 - Open your project and add your packages (It is always good to add a baseline).
 - Commit your project.
 - Push it to your remote repository.
 
-You are done. Now we can explain calmly
+You are done. Now we can explain calmly.
 
 !!! Iceberg setup 
 
 To be able to be commit to your git project, you will need to set a valid set of credentials in your system.
 In case you use SSH (the default way), you will need to make sure those keys are available to your github account and also that the shell add them for the smoother communication with the server. 
 
-In case they are not (and you will notice as soon as you try to clone a project or commit a change into one), you can add them following this steps:
-On windows if you want a nice command line environment, install **http://mingw.org/wiki/msys*
+In case they are not (and you will notice as soon as you try to clone a project or commit a change into one), you can add them following these steps (on Wndows, if you want a nice command line environment, install **http://mingw.org/wiki/msys*): 
 
 !!!! Generating a key pair
 
@@ -57,9 +62,7 @@ Both for OSX and linux you can add such lines in your ==.bash_profile== (or the 
 
 You need to go to settings browser, search for "Use custom SSH keys" and complete your data there as shown in Figure *@UseCustom*).
 
-
 +Use Custom SSH keys settings.>file://figures/useCustom.png|width=75|label=UseCustom+
-
 
 Alternatively, you can execute in your image playground or add to your Pharo system preference file the following expressions:
 
@@ -70,22 +73,18 @@ IceCredentialsProvider sshCredentials
 	privateKey: 'path\to\ssh\id_rsa'
 ]]]
 
-Tip: this can be used too in case you have a non default key file, you just need to replace ==id_rsa== with your file name.
+@@note ""Pro Tip:"" this can be used too in case you have a non default key file, you just need to replace ==id_rsa== with your file name.
 
 
-!!! Create a new project
+!!! Create a new project on github
 
-Figure *@onGitHub* shows the creation of a project. 
+Figure *@onGitHub* shows the creation of a project on Github. You should be able to do it without more information. 
 
 +Create a new project.>file://figures/onGitHub.png|width=75|label=onGitHub+
 
 
+!!! Add a new project to Iceberg
 
-
-
-!!! Add the project to Iceberg
-As git is distributed versioning system, you need a local clone of the repository. This is to this local repository that your changes will be commited to before being pushed to remote repositories.
-In general you commit to your local clone, and from there you push to github or other places.
 
 The first step is then to add a project to Iceberg.
 - Press the '+' button available on the right of the Iceberg main window.
