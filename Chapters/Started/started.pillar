@@ -80,6 +80,17 @@ Figure *@onGitHub* shows the creation of a project.
 +Create a new project.>file://figures/onGitHub.png|width=75|label=onGitHub+
 
 
+
+
+
+!!! Clone the project from Iceberg
+
+As git is distributed versioning, you will need a local clone of the repository.
+You commit to your local clone, and from there you push to github or other places.
+
++Cloning new project.>file://figures/Cloning.png|width=75|label=Cloning+
+
+
 !!! [Optional] Add a nice .gitignore file
 
 Iceberg manages automatically such files.
@@ -106,17 +117,18 @@ meta-inf.ston
 github-*.zip
 ]]]
 
-
 !!! Glimpse at the architecture
-
-
-
-!!! Clone the project from Iceberg
 
 As git is distributed versioning, you will need a local clone of the repository.
 You commit to your local clone, and from there you push to github or other places.
 
+Figure *@architecture* shows the architecture of the system. 
 
+- You have your code in the Pharo image.
+- Pharo is acting as a working copy (it contains the contents of the git local repository).
+- Iceberg manages the publication of your code into the git working copy and the git local repository.
+- Iceberg manages the publication of your code to remote repositories.
+- Iceberg manages the resynchronisation of your image with the git local repository, git remote repositories and the git working copy.
 
-
++Create a new project.>file://figures/architecture.png|width=75|label=architecture+
 
