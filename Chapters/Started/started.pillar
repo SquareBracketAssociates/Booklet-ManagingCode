@@ -1,0 +1,13 @@
+!! Publishing your first project
+
+
+
+!!! For the crazty fools
+
+
+- Créer un projet sur http://www.github.com.
+- Utiliser Iceberg puis ajouter un projet, choisir clone from github.
+- Créer un dossier 'src' avec le FileList ou la ligne de commande dans le dossier que vous avez choisi sur votre système de fichier local. 
+- Ouvrer votre projet et ajouter vos packages (ceux-ci doivent contenir une baseline pour être facilement rechargeable dans Pharo).
+- Commiter le code.
+- Publier votre code sur github.
