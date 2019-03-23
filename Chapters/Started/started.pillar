@@ -200,6 +200,125 @@ And you should commit it and push your changes to your remote repository.
 
 +With a Baseline.>file://figures/WithBaseline.png|width=75|label=WithBaseline+
 
+ 
+!!! Loading from an existing repository
+
+If you already have repository, and you just want to load it into Pharo, you can do it in two ways.
+The first one is as we did above. You can select a package and manually load it.
+
+The second one makes use of Metacello. This will however only work if you have already created a BaselineOf.
+With baseline, you can just do
+
+[[[
+Metacello new
+	baseline: 'MyCoolFirstProjectWithPharo';
+	repository: 'github://Ducasse/MyCoolProjectWithPharo/src';
+	load
+]]]
+
+Do not forget the ==/src== at the end if you have created a subdirectory for the code!
+
+
+!! Empowering your projects
+
+Now that you can save like a breeze your code on github you can take advantage of services
+to automate actions using Travis for example.
+
+!!! Adding Travis integration
+
+By adding two simple files, you can get the tests of your project being run after each commit with travis.
+You need to enable the travis of your github repository. Check on your travis account. 
+
+And you should add the two following files: ==.travis.yml== and ==.smalltalk.ston== on the top level of your 
+repository. 
+
+==.travis.yml==
+
+[[[
+language: smalltalk
+sudo: false
+os:
+  - linux
+smalltalk:
+  - Pharo-7.0
+]]]
+
+==.smalltalk.ston==
+[[[
+SmalltalkCISpec {
+  #loading : [
+    SCIMetacelloLoadSpec {
+      #baseline : 'MyCoolProjectWithPharo',
+      #directory : src',
+      #platforms : [ #pharo ]
+    }
+  ]
+}
+]]]
+
+If you’ve done everything right Travis will pick up the changes and will start testing and building it… and you’re done, congratulations!
+
+!!! On windows
+If you want to make sure that your code runs on windows you should use the Appveyor service and add the appveyor.yml file.
+
+[[[
+environment:
+  CYG_ROOT: C:\cygwin
+  CYG_BASH: C:\cygwin\bin\bash
+  CYG_CACHE: C:\cygwin\var\cache\setup
+  CYG_EXE: C:\cygwin\setup-x86.exe
+  CYG_MIRROR: http://cygwin.mirror.constant.com
+  SCI_RUN: /cygdrive/c/smalltalkCI-master/run.sh
+  matrix:
+    - SMALLTALK: Pharo-6.1
+    - SMALLTALK: Pharo-7.0
+
+platform:
+  - x86
+
+install:
+  - '%CYG_EXE% -dgnqNO -R "%CYG_ROOT%" -s "%CYG_MIRROR%" -l "%CYG_CACHE%" -P unzip'
+  - ps: Start-FileDownload "https://github.com/hpi-swa/smalltalkCI/archive/master.zip" "C:\smalltalkCI.zip"
+  - 7z x C:\smalltalkCI.zip -oC:\ -y > NULL
+
+build: false
+
+test_script:
+  - '%CYG_BASH% -lc "cd $APPVEYOR_BUILD_FOLDER; exec 0</dev/null; $SCI_RUN"'
+]]]
+
+
+!!! Adding badges
+
+With CI happily running, you can add a badge to your readme that will show the current status of your project.
+Here is the one of the Containers-Stack project where we enabled the coveralls.io service to get the coverage of test computed and displayed too.
+
+[[[
+# Containers-Stack
+A dead stupid stack implementation, but one fully working :)
+
+[![Build Status](https://travis-ci.com/Ducasse/Containers-Stack.svg?branch=master)](https://travis-ci.com/Ducasse/Containers-Stack)
+[![Coverage Status](https://coveralls.io/repos/github//Ducasse/Containers-Stack/badge.svg?branch=master)](https://coveralls.io/github//Ducasse/Containers-Stack?branch=master)
+[![License](https://img.shields.io/badge/license-MIT-blue.svg)]()
+[![Pharo version](https://img.shields.io/badge/Pharo-7.0-%23aac9ff.svg)](https://pharo.org/download)
+[![Pharo version](https://img.shields.io/badge/Pharo-8.0-%23aac9ff.svg)](https://pharo.org/download)
+
+## Installation
+The following script installs Containers-Stack in Pharo.
+
+```smalltalk
+Metacello new
+  baseline: 'ContainersStack';
+  repository: 'github://Ducasse/Containers-Stack/src';
+  load.
+```
+]]]
+
+
+To obtain the necessary link, click on the badge in your Travis project overview and select one of the options. You can insert the markdown code directly to your README.md.
+
+!! Understanding the architecture
+
 !!! Glimpse at the architecture
 
 As git is distributed versioning, you will need a local clone of the repository.
