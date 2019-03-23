@@ -1,13 +1,18 @@
 !! Publishing your first project
 
 
+!!! For the crazy fools
 
-!!! For the crazty fools
+If you do not want to read anything, here is the executive summary.
 
+- Create a project on github or any git-based platform.
+- Open Iceberg.
+- Add a project (chose clone from ...).
+- Optionally, in the clone repository, create a directory named =='src'== on your file system using either the FileList or your command line.
+- Open your project and add your packages (It is always good to add a baseline).
+- Commit your project.
+- Push it to your remote repository.
 
-- Créer un projet sur http://www.github.com.
-- Utiliser Iceberg puis ajouter un projet, choisir clone from github.
-- Créer un dossier 'src' avec le FileList ou la ligne de commande dans le dossier que vous avez choisi sur votre système de fichier local. 
-- Ouvrer votre projet et ajouter vos packages (ceux-ci doivent contenir une baseline pour être facilement rechargeable dans Pharo).
-- Commiter le code.
-- Publier votre code sur github.
+You are done. Now we can explain calmly
+
+!!!
