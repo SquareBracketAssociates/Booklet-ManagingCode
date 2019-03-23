@@ -33,7 +33,7 @@ To do this execute the command:
 ssh-keygen -t rsa
 ]]]
 
-It will generate a private and a public key (on unix-based installation under .ssh). 
+It will generate a private and a public key (on unix-based installation in the directory ==.ssh==). 
 You should copy your ==id_rsa.pub== key to your github account.
 Keep the keys in a safe place.
 
@@ -83,12 +83,58 @@ Figure *@onGitHub* shows the creation of a project.
 
 
 
-!!! Clone the project from Iceberg
+!!! Add the project to Iceberg
+As git is distributed versioning system, you need a local clone of the repository. This is to this local repository that your changes will be commited to before being pushed to remote repositories.
+In general you commit to your local clone, and from there you push to github or other places.
 
-As git is distributed versioning, you will need a local clone of the repository.
-You commit to your local clone, and from there you push to github or other places.
+The first step is then to add a project to Iceberg.
+- Press the '+' button available on the right of the Iceberg main window.
+- Then select from which source you want to get your the project. Since you did not clone your project yet, choose the github choice. 
+
+Figure *@Cloning* shows that we are cloning the repository we just created. 
+We specify the owner, the project, and the physical location where the local clone and git working copy will be on your disc.
 
 +Cloning new project.>file://figures/Cloning.png|width=75|label=Cloning+
+
+Once done, Iceberg has added your project to its list of managed projects and cloned an empty repository to your disc as shown by Figure *@FirstTimeCloned* shows the status of the project
+
+We explain it now:
+- MyCoolProjectWithPharo has a star and is green because the system thinks that some changes were not commited. It may happens because of packages in your image in strange state. You should not really bother for now.
+- The Status of the project is 'No Project Found' and this is more important. This is normal since the project is empty, Iceberg cannot find its metadata. We will fix this soon.
+
++Just after cloning an empty project.>file://figures/FirstTimeCloned.png|width=75|label=FirstTimeCloned+
+
+!!! [Optional] Adding a src directory
+
+Some developers like to group all their code in a directory ==src== and this is a nice practice. 
+You can go to your filesystem and create a repository. 
+You can also use the Pharo FileList Browser to do it as shown in Figure *@WithSrc*.
+
++Adding an src folder.>file://figures/WithSrc.png|width=75|label=WithSrc+
+
+
+!!!! Repair to the rescue
+
+Iceberg is a smart tool that tries to help you fixing the problems you may encounter while working with Git.
+As a general principal each time you get a status with a red status (such as No Project Found, or Detached Working Copy), you 
+should ask Iceberg to fix it using the ""Repair"" item.
+
+Iceberg cannot solve all the situations automatically but it will propose and explain you possible repair actions. 
+The actions are ranked from the most probable to the least one.
+Each action will explain you the situation and the consequence of the action.
+It is always clever to read them.
+
+Figure *@RepairFirst* shows the action Create project meta-data and its explanation.
+
++Create project meta-data action and explanation.>file://figures/RepairFirst.png|width=75|label=RepairFirst+
+
+!!! Create project meta-data
+
+
++Tonel.>file://figures/Tonel.png|width=75|label=Tonel+
+
+
++PublishingMetaData.>file://figures/PublishingMetaData.png|width=75|label=PublishingMetaData+
 
 
 !!! [Optional] Add a nice .gitignore file
@@ -116,6 +162,32 @@ meta-inf.ston
 /github-cache
 github-*.zip
 ]]]
+
+
+!!! Defining a BaselineOf
+
+A BaselineOf is description of the architecture of your project. 
+You will express the dependencies between packages and other projects. 
+It is expressed as a subclass of ==BaselineOf== and packaged in a package named 'BaselineOfXXX'.
+
+So if you have no dependencies, you can have something like this.
+
+[[[
+BaselineOf subclass: #BaselineOfMyCoolProjectWithPharo
+	...
+	package: 'BaselineOfMyCoolProjectWithPharo'
+]]]
+
+[[[
+BaselineOfMyCoolProjectWithPharo >> baseline: spec
+	<baseline>
+	spec
+		for: #common
+		do: [ spec package: 'BMyCoolProjectWithPharo'.
+			spec group: 'default' with: #('FileDialog') ]
+]]]
+
+
 
 !!! Glimpse at the architecture
 
