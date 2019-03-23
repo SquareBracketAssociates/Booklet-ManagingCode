@@ -1,13 +1,13 @@
 {
     "package": {
-        "name": "booklet-withstyle",
+        "name": "Booklet-ManagingCode",
         "repo": "wip",
         "subject": "squarebracketassociates",
-        "desc": "How to code well in Pharo",
+        "desc": "How to manage code in Pharo",
         "licenses": ["MIT"],
-        "website_url": "https://github.com/SquareBracketAssociates/Booklet-PharoWithStyle",
-        "issue_tracker_url": "https://github.com/SquareBracketAssociates/Booklet-PharoWithStyle/issues",
-        "vcs_url": "https://github.com/SquareBracketAssociates/Booklet-PharoWithStyle.git",
+        "website_url": "https://github.com/SquareBracketAssociates/Booklet-ManagingCode",
+        "issue_tracker_url": "https://github.com/SquareBracketAssociates/Booklet-ManagingCode/issues",
+        "vcs_url": "https://github.com/SquareBracketAssociates/Booklet-ManagingCode.git",
         "labels": ["work-in-progress"]
     },
 
@@ -18,8 +18,8 @@
 
     "files": [
         {
-            "includePattern": "_result/pdf/withstylebook.pdf",
-            "uploadPattern": "withStyle-wip.pdf",
+            "includePattern": "_result/pdf/index.pdf",
+            "uploadPattern": "ManagingCode-wip.pdf",
             "matrixParams": { "override": 1 }
         }
     ],

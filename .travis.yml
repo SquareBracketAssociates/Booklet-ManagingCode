@@ -28,7 +28,7 @@ deploy:
 - provider: bintray
   file: .bintray.json
   on:
-    repo: SquareBracketAssociates/Booklet-PharoWithStyle
+    repo: SquareBracketAssociates/Booklet-ManagingCode
   skip_cleanup: true
   user: ducasse
   key:
