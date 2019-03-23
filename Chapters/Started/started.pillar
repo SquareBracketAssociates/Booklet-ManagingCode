@@ -1,5 +1,7 @@
 !! Publishing your first project
 
+In this chapter we explain how you can publish your project on github using Iceberg.
+We do not explain concepts like commit, push/pull, merging, or cloning.
 
 !!! For the crazy fools
 
@@ -15,4 +17,86 @@ If you do not want to read anything, here is the executive summary.
 
 You are done. Now we can explain calmly
 
-!!!
+!!! Iceberg Setup 
+
+To be able to be commit to your git project, you will need to set a valid set of credentials in your system.
+In case you use SSH (the default way), you will need to make sure those keys are available to your github account and also that the shell add them for the smoother communication with the server. 
+
+In case they are not (and you will notice as soon as you try to clone a project or commit a change into one), you can add them following this steps:
+On windows if you want a nice command line environment, install **http://mingw.org/wiki/msys*
+
+!!!! Generating a key pair
+
+To do this execute the command:
+[[[
+ssh-keygen -t rsa
+]]]
+
+It will generate a private and a public key (on unix-based installation under .ssh). 
+You should copy your ==id_rsa.pub== key to your github account.
+Keep the keys in a safe place.
+
+On Windows, you can follow instructions on how to generate your keys as explained at *http://guides.beanstalkapp.com/version-control/git-on-windows.html#installing-ssh-keys*.
+
+!!!! Adding the key to your ssh
+
+In linux, execute in your shell:
+[[[
+ssh-add ~/.ssh/id_rsa
+]]]
+
+In OSX, execute in your shell:
+[[[
+ssh-add -K ~/.ssh/id_rsa
+]]]
+
+Both for OSX and linux you can add such lines in your ==.bash_profile== (or the one corresponding to your shell installation such as ==.zshrc==) so they are automatically executed on each new shell session.
+
+!!!! Tell Pharo to use your keys
+
+You need to go to settings browser, search for "Use custom SSH keys" and complete your data there as shown in Figure *@UseCustom*).
+
+
++Use Custom SSH keys settings.>file://figures/useCustom.png|width=75|label=UseCustom+
+
+
+Alternatively, you can execute in your image playground or add to your Pharo system preference file the following expressions:
+
+[[[
+IceCredentialsProvider useCustomSsh: true.
+IceCredentialsProvider sshCredentials
+	publicKey: 'path\to\ssh\id_rsa.pub';
+	privateKey: 'path\to\ssh\id_rsa'
+]]]
+
+Tip: this can be used too in case you have a non default key file, you just need to replace ==id_rsa== with your file name.
+
+
+!!! Create a new project
+
+
+
++Create a new project.>file://figures/onGitHub.png|width=75|label=onGitHub+
+
+
+[[[
+# changes file
+*.changes
+
+# system image
+*.image
+
+# Pharo Smalltalk Debug log file
+PharoDebug.log
+
+# Monticello package cache
+/package-cache
+
+# playground cache
+/play-cache
+/play-stash
+
+# Metacello-github cache
+/github-cache
+github-*.zip
+]]]
