@@ -2,6 +2,7 @@
 
 In this chapter we explain how you can publish your project on github using Iceberg.
 We do not explain concepts like commit, push/pull, merging, or cloning.
+We thanks Peter Uhnak for his first blog on publishing Pharo code on Github.
 
 !!! For the crazy fools
 
@@ -17,7 +18,7 @@ If you do not want to read anything, here is the executive summary.
 
 You are done. Now we can explain calmly
 
-!!! Iceberg Setup 
+!!! Iceberg setup 
 
 To be able to be commit to your git project, you will need to set a valid set of credentials in your system.
 In case you use SSH (the default way), you will need to make sure those keys are available to your github account and also that the shell add them for the smoother communication with the server. 
@@ -74,29 +75,48 @@ Tip: this can be used too in case you have a non default key file, you just need
 
 !!! Create a new project
 
-
+Figure *@onGitHub* shows the creation of a project. 
 
 +Create a new project.>file://figures/onGitHub.png|width=75|label=onGitHub+
 
 
-[[[
-# changes file
-*.changes
+!!! [Optional] Add a nice .gitignore file
 
-# system image
+Iceberg manages automatically such files.
+[[[
+# For Pharo 70 and up
+# http://www.pharo.org
+# Since Pharo 70 all the community is moving to git.
+
+# image, changes and sources
+*.changes
+*.sources
 *.image
 
-# Pharo Smalltalk Debug log file
+# Pharo Debug log file and launcher metadata
 PharoDebug.log
+pharo.version
+meta-inf.ston
 
-# Monticello package cache
-/package-cache
-
-# playground cache
-/play-cache
-/play-stash
+# Since Pharo 70, all local cache files for Monticello package cache, playground, epicea... are under the pharo-local
+/pharo-local
 
 # Metacello-github cache
 /github-cache
 github-*.zip
 ]]]
+
+
+!!! Glimpse at the architecture
+
+
+
+!!! Clone the project from Iceberg
+
+As git is distributed versioning, you will need a local clone of the repository.
+You commit to your local clone, and from there you push to github or other places.
+
+
+
+
+

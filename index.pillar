@@ -2,6 +2,7 @@
 
 
 ${inputFile:path=Chapters/Started/started.pillar}$
+${inputFile:path=Chapters/Started/glossary.pillar}$
 
 
 
