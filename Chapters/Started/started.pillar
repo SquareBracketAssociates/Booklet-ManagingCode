@@ -135,20 +135,34 @@ Tonel is the favorite encoding for Pharo project.
 Tonel has been designed to be Windows and file system friendly. 
 So change it only if you know why. 
 
-
 +Showing where the metadata will be saved and the format encodings.>file://figures/Tonel.png|width=75|label=Tonel+
 
+When continuing, Iceberg shows you the files that you are actually commit as shown in Figure *@PublishingMetaData*
 
-+PublishingMetaData.>file://figures/PublishingMetaData.png|width=75|label=PublishingMetaData+
++Details of meta data commit.>file://figures/PublishingMetaData.png|width=75|label=PublishingMetaData+
 
+Once you have commited the meta-data, Iceberg shows you that your project is repaired but not loaded as shown in Figure *@SavedMetaData*. This is normal since up until now we did not add package to our project. 
+But your local repository is ready.
 
-+SavedMetaData.>file://figures/SavedMetaData.png|width=75|label=SavedMetaData+
++The package is clean, meta-data are saved, but it is not loaded.>file://figures/SavedMetaData.png|width=75|label=SavedMetaData+
 
-!!! Adding your package
+!!! Adding and commiting your package
+Once you project contains Iceberg meta-data, Iceberg will be able to manage it easily. 
+Double click on your project and add your package by pressing the + (Add Package) button as shown by Figure *@WithAPackage*.
 
-+WithAPackage.>file://figures/WithAPackage.png|width=75|label=WithAPackage+
++Adding a package to your project.>file://figures/WithAPackage.png|width=75|label=WithAPackage+
 
+Again Iceberg shows that your package contains changes that are not commited using the green color and the * in front of the package name.
 
+Now you are left with two actions:
+- Commit the changes to your local repository using the Commit button. Iceberg will reflect this change by removing the * and the changing the color. 
+You can commit several times. 
+- Publishing your changes from your local directory to your remote repository using the Push button. 
+
+When you push your changes, Iceberg will show you all the commits that you already did and it will push all the changes
+that are present in your remote repository as shown in Figure *@Push*.
+
++Publishing your commited changes.>file://figures/push.png|width=75|label=Push+
 
 !!! [Optional] Add a nice .gitignore file
 
