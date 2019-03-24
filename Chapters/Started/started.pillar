@@ -160,12 +160,13 @@ You can commit several times.
 - Publishing your changes from your local directory to your remote repository using the Push button. 
 
 When you push your changes, Iceberg will show you all the commits that you already did and it will push all the changes
-that are present in your remote repository as shown in Figure *@Push*.
+that are present toyour remote repository as shown in Figure *@Push*. The figure shows the commits we did to add a baseline
+and this is what we will do now. 
+Indeed what is left to do is to define a baseline to make sure that you can easily load your project in another image.
+
 
 +Publishing your commited changes.>file://figures/push.png|width=75|label=Push+
 
-Now you are nearly done. 
-What is left to do it to define a baseline to make sure that you can easily load your project in another image.
 
 
 
