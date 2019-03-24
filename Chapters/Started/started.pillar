@@ -164,6 +164,60 @@ that are present in your remote repository as shown in Figure *@Push*.
 
 +Publishing your commited changes.>file://figures/push.png|width=75|label=Push+
 
+Now you are nearly done. 
+What is left to do it to define a baseline to make sure that you can easily load your project in another image.
+
+
+
+!!! Defining a BaselineOf
+
+A BaselineOf is a description of the project architecture.
+You will express the dependencies between packages and other projects so that all the dependent projects are loaded without
+the user to have to understand and bother about them.
+A baseline is expressed as a subclass of ==BaselineOf== and packaged in a package named =='BaselineOfXXX'==.
+
+So if you have no dependencies, you can have something like this.
+
+[[[
+BaselineOf subclass: #BaselineOfMyCoolProjectWithPharo
+	...
+	package: 'BaselineOfMyCoolProjectWithPharo'
+]]]
+
+[[[
+BaselineOfMyCoolProjectWithPharo >> baseline: spec
+	<baseline>
+	spec
+		for: #common
+		do: [ spec package: 'BMyCoolProjectWithPharo'.
+			spec group: 'default' with: #('FileDialog') ]
+]]]
+
+Once you have defined the baseline, you should add it to your project as shown in Figure *@WithBaseline*.
+And you should commit it and push your changes to your remote repository.
+
++With a Baseline.>file://figures/WithBaseline.png|width=75|label=WithBaseline+
+
+The online documentation available at: *https://github.com/pharo-open-documentation/pharo-wiki/blob/master/General/Baselines.md*.
+
+
+!!! Loading from an existing repository
+
+If you already have repository, and you just want to load it into Pharo, you can do it in two ways.
+The first one is as we did above. You can select a package and manually load it.
+
+The second one makes use of Metacello. This will however only work if you have already created a BaselineOf.
+With baseline, you can just do
+
+[[[
+Metacello new
+	baseline: 'MyCoolFirstProjectWithPharo';
+	repository: 'github://Ducasse/MyCoolProjectWithPharo/src';
+	load
+]]]
+
+Do not forget the ==/src== at the end if you have created a subdirectory for the code!
+
 !!! [Optional] Add a nice .gitignore file
 
 Iceberg manages automatically such files.
@@ -190,52 +244,6 @@ meta-inf.ston
 github-*.zip
 ]]]
 
-
-!!! Defining a BaselineOf
-
-A BaselineOf is description of the architecture of your project. 
-You will express the dependencies between packages and other projects. 
-It is expressed as a subclass of ==BaselineOf== and packaged in a package named 'BaselineOfXXX'.
-
-So if you have no dependencies, you can have something like this.
-
-[[[
-BaselineOf subclass: #BaselineOfMyCoolProjectWithPharo
-	...
-	package: 'BaselineOfMyCoolProjectWithPharo'
-]]]
-
-[[[
-BaselineOfMyCoolProjectWithPharo >> baseline: spec
-	<baseline>
-	spec
-		for: #common
-		do: [ spec package: 'BMyCoolProjectWithPharo'.
-			spec group: 'default' with: #('FileDialog') ]
-]]]
-
-Once you have defined the baseline, you should add it to your project as shown in Figure *@WithBaseline*.
-And you should commit it and push your changes to your remote repository.
-
-+With a Baseline.>file://figures/WithBaseline.png|width=75|label=WithBaseline+
-
- 
-!!! Loading from an existing repository
-
-If you already have repository, and you just want to load it into Pharo, you can do it in two ways.
-The first one is as we did above. You can select a package and manually load it.
-
-The second one makes use of Metacello. This will however only work if you have already created a BaselineOf.
-With baseline, you can just do
-
-[[[
-Metacello new
-	baseline: 'MyCoolFirstProjectWithPharo';
-	repository: 'github://Ducasse/MyCoolProjectWithPharo/src';
-	load
-]]]
-
-Do not forget the ==/src== at the end if you have created a subdirectory for the code!
 
 
 !! Empowering your projects
