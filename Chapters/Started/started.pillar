@@ -5,9 +5,8 @@ We do not explain concepts like commit, push/pull, merging, or cloning.
 We thank Peter Uhnak for his first blog on publishing Pharo code on Github.
 
 As git is distributed versioning system, you need a local clone of the repository. 
-This is to this local repository that your changes will be commited to before being pushed to remote repositories.
-In general you commit to your local clone, and from there you push to github or other places.
-Iceberg will do all the operations and more for you.
+In general you commit your changes to your local clone, and from there you push to remote repositories like  github or gitlab, or that of your company.
+Iceberg will do all these operations and more for you.
 
 !!! For the impatient
 
@@ -22,14 +21,14 @@ If you do not want to read anything, here is the executive summary.
 - Commit your project.
 - Push it to your remote repository.
 
-You are done. Now we can explain calmly.
+You are done. Now we can explain in more detail.
 
 !!! Iceberg setup 
 
-To be able to be commit to your git project, you will need to set a valid set of credentials in your system.
-In case you use SSH (the default way), you will need to make sure those keys are available to your github account and also that the shell add them for the smoother communication with the server. 
+To be able to be commit to your git project, you will need to set up a valid set of credentials in your system.
+In case you use SSH (the default way), you will need to make sure those keys are available to your github account and also that the shell adds them for smoother communication with the server. 
 
-In case they are not (and you will notice as soon as you try to clone a project or commit a change into one), you can add them following these steps (on Wndows, if you want a nice command line environment, install **http://mingw.org/wiki/msys*): 
+In case they are not (and you will notice as soon as you try to clone a project or commit a change into one), you can add them following these steps (on Windows, if you want a nice command line environment, install **http://mingw.org/wiki/msys*): 
 
 !!!! Generating a key pair
 
@@ -56,7 +55,7 @@ In OSX, execute in your shell:
 ssh-add -K ~/.ssh/id_rsa
 ]]]
 
-Both for OSX and linux you can add such lines in your ==.bash_profile== (or the one corresponding to your shell installation such as ==.zshrc==) so they are automatically executed on each new shell session.
+For both OSX and linux you can add such lines in your ==.bash_profile== (or the one corresponding to your shell installation such as ==.zshrc==) so they are automatically executed on each new shell session.
 
 !!!! Tell Pharo to use your keys
 
@@ -88,25 +87,25 @@ Figure *@onGitHub* shows the creation of a project on Github. You should be able
 
 The first step is then to add a project to Iceberg.
 - Press the '+' button available on the right of the Iceberg main window.
-- Then select from which source you want to get your the project. Since you did not clone your project yet, choose the github choice. 
+- Then select from which source you want to get your the project. Since you did not clone your project yet, choose the github option. 
 
 Figure *@Cloning* shows that we are cloning the repository we just created. 
-We specify the owner, the project, and the physical location where the local clone and git working copy will be on your disc.
+We specify the owner, the project, and the physical location where the local clone and git working copy will be on your disk.
 
 +Cloning new project.>file://figures/Cloning.png|width=75|label=Cloning+
 
-Once done, Iceberg has added your project to its list of managed projects and cloned an empty repository to your disc as shown by Figure *@FirstTimeCloned* shows the status of the project
+Once done, Iceberg has added your project to its list of managed projects and cloned an empty repository to your disk as shown by Figure *@FirstTimeCloned* shows the status of the project
 
 We explain it now:
-- MyCoolProjectWithPharo has a star and is green because the system thinks that some changes were not commited. It may happens because of packages in your image in strange state. You should not really bother for now.
+- MyCoolProjectWithPharo has a star and is green because the system thinks that some changes were not committed. It may happen because of packages in your image being in a strange state. You should not worry about that for now.
 - The Status of the project is 'No Project Found' and this is more important. This is normal since the project is empty, Iceberg cannot find its metadata. We will fix this soon.
 
 +Just after cloning an empty project.>file://figures/FirstTimeCloned.png|width=75|label=FirstTimeCloned+
 
-!!! [Optional but strognly suggested] Adding a src directory
+!!! [Optional but strongly suggested] Adding a src directory
 
 Some developers like to group all their code in a directory ==src== and this is a nice practice. 
-We follow strongly suggest to follow it.
+We strongly suggest to follow it.
 You can go to your filesystem and create a repository. 
 And you can also use the Pharo FileList Browser to do it as shown in Figure *@WithSrc*.
 
@@ -116,13 +115,13 @@ And you can also use the Pharo FileList Browser to do it as shown in Figure *@Wi
 !!! Repair to the rescue
 
 Iceberg is a smart tool that tries to help you fixing the problems you may encounter while working with Git.
-As a general principal each time you get a status with a red status (such as No Project Found, or Detached Working Copy), you 
+As a general principle each time you get a status text with a red color (such as No Project Found, or Detached Working Copy), you 
 should ask Iceberg to fix it using the ""Repair"" item.
 
 Iceberg cannot solve all the situations automatically but it will propose and explain you possible repair actions. 
 The actions are ranked from the most probable to the least one.
 Each action will explain you the situation and the consequence of the action.
-It is always clever to read them.
+It is always a good idea to read them.
 
 Figure *@RepairFirst* shows the action Create project meta-data and its explanation.
 
@@ -130,29 +129,29 @@ Figure *@RepairFirst* shows the action Create project meta-data and its explanat
 
 !!! Create project meta-data
 
-When you chose to create the project meta-data, Iceberg show you the file of your project as well as the repository encoding as shown in Figure *@Tonel*.
+When you chose to create the project meta-data, Iceberg shows you the file of your project as well as the repository encoding as shown in Figure *@Tonel*.
 Tonel is the favorite encoding for Pharo project.
 Tonel has been designed to be Windows and file system friendly. 
 So change it only if you know why. 
 
 +Showing where the metadata will be saved and the format encodings.>file://figures/Tonel.png|width=75|label=Tonel+
 
-When continuing, Iceberg shows you the files that you are actually commit as shown in Figure *@PublishingMetaData*
+When continuing, Iceberg shows you the files that you are actually committing as shown in Figure *@PublishingMetaData*
 
 +Details of meta data commit.>file://figures/PublishingMetaData.png|width=75|label=PublishingMetaData+
 
-Once you have commited the meta-data, Iceberg shows you that your project is repaired but not loaded as shown in Figure *@SavedMetaData*. This is normal since up until now we did not add package to our project. 
+Once you have committed the meta-data, Iceberg shows you that your project is repaired but not loaded as shown in Figure *@SavedMetaData*. This is normal since up until now we did not add package to our project. 
 But your local repository is ready.
 
 +The package is clean, meta-data are saved, but it is not loaded.>file://figures/SavedMetaData.png|width=75|label=SavedMetaData+
 
 !!! Adding and commiting your package
-Once you project contains Iceberg meta-data, Iceberg will be able to manage it easily. 
+Once your project contains Iceberg meta-data, Iceberg will be able to manage it easily. 
 Double click on your project and add your package by pressing the + (Add Package) button as shown by Figure *@WithAPackage*.
 
 +Adding a package to your project.>file://figures/WithAPackage.png|width=75|label=WithAPackage+
 
-Again Iceberg shows that your package contains changes that are not commited using the green color and the * in front of the package name.
+Again Iceberg shows that your package contains changes that are not committed using the green color and the * in front of the package name.
 
 Now you are left with two actions:
 - Commit the changes to your local repository using the Commit button. Iceberg will reflect this change by removing the * and the changing the color. 
@@ -160,12 +159,12 @@ You can commit several times.
 - Publishing your changes from your local directory to your remote repository using the Push button. 
 
 When you push your changes, Iceberg will show you all the commits that you already did and it will push all the changes
-that are present toyour remote repository as shown in Figure *@Push*. The figure shows the commits we did to add a baseline
+that are present to your remote repository as shown in Figure *@Push*. The figure shows the commits we did to add a baseline
 and this is what we will do now. 
 Indeed what is left to do is to define a baseline to make sure that you can easily load your project in another image.
 
 
-+Publishing your commited changes.>file://figures/push.png|width=75|label=Push+
++Publishing your committed changes.>file://figures/push.png|width=75|label=Push+
 
 
 
@@ -204,11 +203,11 @@ The online documentation available at: *https://github.com/pharo-open-documentat
 
 !!! Loading from an existing repository
 
-If you already have repository, and you just want to load it into Pharo, you can do it in two ways.
+If you already have a repository, and you just want to load it into Pharo, you can do it in two ways.
 The first one is as we did above. You can select a package and manually load it.
 
 The second one makes use of Metacello. This will however only work if you have already created a BaselineOf.
-With baseline, you can just do
+With a baseline, you can just do
 
 [[[
 Metacello new
