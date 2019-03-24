@@ -1,9 +1,6 @@
 # Booklet-ManagingCode
 This booklet explains you how to manage your code with Pharo
 
-# Booklet-TestingInPharo
-This booklet describes SUnit and DrTests.
-
 [![Build status][badge]][travis]
 
 [travis]: https://travis-ci.org/SquareBracketAssociates/Booklet-ManagingCode
