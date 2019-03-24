@@ -103,16 +103,17 @@ We explain it now:
 
 +Just after cloning an empty project.>file://figures/FirstTimeCloned.png|width=75|label=FirstTimeCloned+
 
-!!! [Optional] Adding a src directory
+!!! [Optional but strognly suggested] Adding a src directory
 
 Some developers like to group all their code in a directory ==src== and this is a nice practice. 
+We follow strongly suggest to follow it.
 You can go to your filesystem and create a repository. 
-You can also use the Pharo FileList Browser to do it as shown in Figure *@WithSrc*.
+And you can also use the Pharo FileList Browser to do it as shown in Figure *@WithSrc*.
 
-+Adding an src folder.>file://figures/WithSrc.png|width=75|label=WithSrc+
++Adding an src folder to .>file://figures/WithSrc.png|width=75|label=WithSrc+
 
 
-!!!! Repair to the rescue
+!!! Repair to the rescue
 
 Iceberg is a smart tool that tries to help you fixing the problems you may encounter while working with Git.
 As a general principal each time you get a status with a red status (such as No Project Found, or Detached Working Copy), you 
@@ -129,8 +130,13 @@ Figure *@RepairFirst* shows the action Create project meta-data and its explanat
 
 !!! Create project meta-data
 
+When you chose to create the project meta-data, Iceberg show you the file of your project as well as the repository encoding as shown in Figure *@Tonel*.
+Tonel is the favorite encoding for Pharo project.
+Tonel has been designed to be Windows and file system friendly. 
+So change it only if you know why. 
 
-+Tonel.>file://figures/Tonel.png|width=75|label=Tonel+
+
++Showing where the metadata will be saved and the format encodings.>file://figures/Tonel.png|width=75|label=Tonel+
 
 
 +PublishingMetaData.>file://figures/PublishingMetaData.png|width=75|label=PublishingMetaData+
