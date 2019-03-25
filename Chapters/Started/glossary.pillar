@@ -7,7 +7,7 @@ Part of this vocabulary is Git vocabulary, part of it is Github's vocabulary, pa
 !!! Git 
 !!!! Disk Working Copy (Git)
 
-It is important not to confuse the code in your disk with the one of the repository itself.
+It is important not to confuse the code on your disk with the one of the repository itself.
 The repository (a kind of database) has a lot more information, such as known branches, history of commits, remote repositories, the git index and much more.
 Normally this information is kept in a directory named .git.
 The files that you see on your disk and that you edit are just a working copy of the contents in the repository.
@@ -16,7 +16,7 @@ The files that you see on your disk and that you edit are just a working copy of
 
 !!!!The git index (Git)
 
-The index is an intermediate structure which is used to select the contents that are going to be commited.
+The index is an intermediate structure which is used to select the contents that are going to be committed.
 
 So, to commit changes to your local repository, two actions are needed:
 
@@ -37,7 +37,7 @@ Most frequently your local repository will be related with one remote repository
 !!!!Upstream (Git)
 
 The upstream of a branch is a remote branch which is the default source when you pull and the default target when you push. 
-Most probably is a branch with the same name in your origin remote repository.
+Most probably it is a branch with the same name in your origin remote repository.
 
 !!!!Commit-ish (Git)
 
@@ -81,7 +81,7 @@ Iceberg's working copy represents the code loaded in the Pharo image, with the l
 
 !!!! Local Repository Missing (Iceberg)
 
-The Local Repository Missing status is shown by iceberg when a project in the image does not found its repository on disk. 
+The Local Repository Missing status is shown by iceberg when a project in the image does not find its repository on disk. 
 This happens most probably because you've downloaded an image that somebody else created, or you deleted/moved a git repository in your disk. 
 Most of the times this status is not shown because iceberg automatically manages disk repositories.
 
@@ -107,7 +107,7 @@ Either you can
 # checkout a new branch pointing to your working copy commit or 
 # merge what is in the image into the current branch.
 
-Detached HEAD (Git) The Detached HEAD status means that the current repository on disk is not working on a branch but on a commit. From a git stand-point you can commit and continue working but your changes may get lost as the commit is not pointed by any branch. 
-From an Iceberg stand-point, we forbid commit in this state to avoid strange situations.
+Detached HEAD (Git) The Detached HEAD status means that the current repository on disk is not working on a branch but on a commit. From a git stand-point you can commit and continue working but your changes may get lost as the commit is not pointed to by any branch. 
+From an Iceberg stand-point, we forbid commit in this state to avoid difficult to understand and repair situations.
 To recover from this status, you need to checkout a (new or existing) branch.
 
