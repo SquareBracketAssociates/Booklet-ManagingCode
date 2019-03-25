@@ -24,12 +24,11 @@ install:
 script:
   - ./pillar/build/pillar build pdf
 
-deploy:
-- provider: bintray
-  file: .bintray.json
-  on:
-    repo: SquareBracketAssociates/Booklet-ManagingCode
-  skip_cleanup: true
-  user: ducasse
-  key:
-    secure: Kp0pzT8WsoPao5AbxGQSYHQgZxd0wjmoZRmBmIGxAGb3o0YUDpMVO32rxshmSQ5uV268nQ/e6JXPF5ENDN1hB9MOZRPk0UfMcjWsXrFyg5QQ5+8j2pSxvm0SpKlBSzVf3xaV+SWAhLDRaBGiSKOHVOxWoQOQmS94Akrk4nbNvWqke19ABvxcC1uh56TPcd4RB2pOUDJmOEyININUQKE6EA5IzKQLK8mGzZbdh30n8903X8A8Ki3qN8F3X1j95KFJopX8EO2RGYEvaPYGcZMFITiCqIDL4tJYnsFjP4XJg79kgF24mH00nJCXlVJD+90CEKexaq3NaxkCYcuJ3Z5AJqi0tXKSYO5k1F4MD1OYNk2e1VQg0yMLfNYw5YV+8rz6XzRA1i1ZD8+CZcONh9MpqK40s5VT8rueIeHtEv0xUg+4WbiWWCN+miKAeqi8kGKlcRijz+E/vqQzWGfSOrRuPXEepLi5NQn02hQOyYcB5kHIPFEsornbCqv+uMgHhOWu8aNn7fZygIjbnXUWUxrh4eKru1MzUm2XHj7qBlAYY0RK0LroIGj2QF4Nt5FfWEt7rrmRDM32cY1WFZk2VTCKdC1LYoG8+kFhL4ZX3SD/peOj1gjEiFoZeS9lOZx5YyDM4CIiTm38zhlKuYmyuOJEbANVd21I3LAMxBGGTx/byac=
+after_success:
+  - wget -c https://github.com/probonopd/uploadtool/raw/master/upload.sh
+  - mv _result/pdf/index.pdf ManageCode-wip.pdf
+  - bash upload.sh ManageCode-wip.pdf
+
+branches:
+  except:
+    - /^(?i:continuous)$/
