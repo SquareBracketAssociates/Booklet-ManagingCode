@@ -26,23 +26,23 @@ You are done. Now we can explain calmly.
 
 !!! Iceberg setup 
 
-To be able to be commit to your git project, you will need to set a valid set of credentials in your system.
-In case you use SSH (the default way), you will need to make sure those keys are available to your github account and also that the shell add them for the smoother communication with the server. 
+To be able to commit to your git project, you will need to set valid credentials in your system.
+In case you use SSH (the default way), you will need to make sure those keys are available to your github account and also that the shell adds them for smoother communication with the server. 
 
-In case they are not (and you will notice as soon as you try to clone a project or commit a change into one), you can add them following these steps (on Wndows, if you want a nice command line environment, install **http://mingw.org/wiki/msys*): 
+In case SSH is not setup (and you will notice as soon as you try to clone a project or commit a change to one), you can add SSH keys by following these steps (on Windows, if you want a nice command line environment, install **http://mingw.org/wiki/msys*): 
 
 !!!! Generating a key pair
 
-To do this execute the command:
+To do this, execute the command:
 [[[
 ssh-keygen -t rsa
 ]]]
 
-It will generate a private and a public key (on unix-based installation in the directory ==.ssh==). 
+It will generate a private and a public key (on a unix-based installation in the directory ==.ssh==). 
 You should copy your ==id_rsa.pub== key to your github account.
 Keep the keys in a safe place.
 
-On Windows, you can follow instructions on how to generate your keys as explained at *http://guides.beanstalkapp.com/version-control/git-on-windows.html#installing-ssh-keys*.
+On Windows, you can follow instructions on how to generate your keys at *http://guides.beanstalkapp.com/version-control/git-on-windows.html#installing-ssh-keys*.
 
 !!!! Adding the key to your ssh
 
@@ -56,15 +56,15 @@ In OSX, execute in your shell:
 ssh-add -K ~/.ssh/id_rsa
 ]]]
 
-Both for OSX and linux you can add such lines in your ==.bash_profile== (or the one corresponding to your shell installation such as ==.zshrc==) so they are automatically executed on each new shell session.
+Both for OSX and linux you can add such lines to your ==.bash_profile== (or the one corresponding to your shell installation such as ==.zshrc==) so they are automatically executed on each new shell session.
 
 !!!! Tell Pharo to use your keys
 
-You need to go to settings browser, search for "Use custom SSH keys" and complete your data there as shown in Figure *@UseCustom*).
+Go to settings browser, search for "Use custom SSH keys" and enter your data there as shown in Figure *@UseCustom*).
 
 +Use Custom SSH keys settings.>file://figures/useCustom.png|width=75|label=UseCustom+
 
-Alternatively, you can execute in your image playground or add to your Pharo system preference file the following expressions:
+Alternatively, you can execute the following expressions in your image playground or add them to your Pharo system preference file:
 
 [[[
 IceCredentialsProvider useCustomSsh: true.
@@ -73,12 +73,12 @@ IceCredentialsProvider sshCredentials
 	privateKey: 'path\to\ssh\id_rsa'
 ]]]
 
-@@note ""Pro Tip:"" this can be used too in case you have a non default key file, you just need to replace ==id_rsa== with your file name.
+@@note ""Pro Tip:"" this can be used too in case you have a non-default key file. You just need to replace ==id_rsa== with your file name.
 
 
 !!! Create a new project on github
 
-Figure *@onGitHub* shows the creation of a project on Github. You should be able to do it without more information. 
+Figure *@onGitHub* shows the creation of a project on Github. 
 
 +Create a new project.>file://figures/onGitHub.png|width=75|label=onGitHub+
 
@@ -86,83 +86,80 @@ Figure *@onGitHub* shows the creation of a project on Github. You should be able
 !!! Add a new project to Iceberg
 
 
-The first step is then to add a project to Iceberg.
-- Press the '+' button available on the right of the Iceberg main window.
-- Then select from which source you want to get your the project. Since you did not clone your project yet, choose the github choice. 
+The first step is then to add a project to Iceberg:
+- Press the '+' button to the right of the Iceberg main window.
+- Select the source of your project. In our example, since you did not clone your project yet, choose the github option. 
 
 Figure *@Cloning* shows that we are cloning the repository we just created. 
-We specify the owner, the project, and the physical location where the local clone and git working copy will be on your disc.
+We specify the owner, project, and physical location where the local clone and git working copy will be on your disk.
 
 +Cloning new project.>file://figures/Cloning.png|width=75|label=Cloning+
 
-Once done, Iceberg has added your project to its list of managed projects and cloned an empty repository to your disc as shown by Figure *@FirstTimeCloned* shows the status of the project
+Iceberg has now added your project to its list of managed projects and cloned an empty repository to your disk. You will see the status of your project, as in figure *@FirstTimeCloned*
 
-We explain it now:
-- MyCoolProjectWithPharo has a star and is green because the system thinks that some changes were not commited. It may happens because of packages in your image in strange state. You should not really bother for now.
-- The Status of the project is 'No Project Found' and this is more important. This is normal since the project is empty, Iceberg cannot find its metadata. We will fix this soon.
+Here is a breakdown of what you are seeing:
+- MyCoolProjectWithPharo has a star and is green. This usually means that you have changes which haven't been commited yet, but may also happen in unrelated edge cases like this one. Don't worry about this for now.
+- The Status of the project is 'No Project Found' and this is more important. This is normal since the project is empty. Iceberg cannot find its metadata. We will fix this soon.
 
 +Just after cloning an empty project.>file://figures/FirstTimeCloned.png|width=75|label=FirstTimeCloned+
 
-!!! [Optional but strognly suggested] Adding a src directory
+!!! [Optional but strongly suggested] Adding a src directory
 
-Some developers like to group all their code in a directory ==src== and this is a nice practice. 
-We follow strongly suggest to follow it.
-You can go to your filesystem and create a repository. 
-And you can also use the Pharo FileList Browser to do it as shown in Figure *@WithSrc*.
+Some developers like to group all their code in a directory named ==src== and this is a nice practice. 
+We strongly suggest that you follow it.
+You can go to your filesystem and create one in your repository. 
+You can also use the Pharo FileList Browser to do it as shown in Figure *@WithSrc*.
 
-+Adding an src folder to .>file://figures/WithSrc.png|width=75|label=WithSrc+
++Adding an src folder to a repository.>file://figures/WithSrc.png|width=75|label=WithSrc+
 
 
 !!! Repair to the rescue
 
-Iceberg is a smart tool that tries to help you fixing the problems you may encounter while working with Git.
-As a general principal each time you get a status with a red status (such as No Project Found, or Detached Working Copy), you 
-should ask Iceberg to fix it using the ""Repair"" item.
+Iceberg is a smart tool that tries to help you fix the problems you may encounter while working with Git.
+As a general principal, each time you get a status with red text (such as "No Project Found" or "Detached Working Copy"), you 
+should ask Iceberg to fix it using the ""Repair"" command.
 
-Iceberg cannot solve all the situations automatically but it will propose and explain you possible repair actions. 
-The actions are ranked from the most probable to the least one.
-Each action will explain you the situation and the consequence of the action.
-It is always clever to read them.
+Iceberg cannot solve all situations automatically, but it will propose and explain possible repair actions. 
+The actions are ranked from most to least probable.
+Each action will explain the situation and the consequence of the proposed action.
+It is always a good idea to read them.
 
-Figure *@RepairFirst* shows the action Create project meta-data and its explanation.
+Figure *@RepairFirst* shows the "Create project metadata" action and its explanation.
 
-+Create project meta-data action and explanation.>file://figures/RepairFirst.png|width=75|label=RepairFirst+
++Create project metadata action and explanation.>file://figures/RepairFirst.png|width=75|label=RepairFirst+
 
-!!! Create project meta-data
+!!! Create project metadata
 
-When you chose to create the project meta-data, Iceberg show you the file of your project as well as the repository encoding as shown in Figure *@Tonel*.
-Tonel is the favorite encoding for Pharo project.
-Tonel has been designed to be Windows and file system friendly. 
-So change it only if you know why. 
+When you choose to create the project metadata, Iceberg shows you the filesystem of your project as well as the repository format as shown in Figure *@Tonel*.
+Tonel is the preferred format for Pharo projects.
+It has been designed to be Windows and file system friendly. 
+Change it only if you know what you're doing! 
 
 +Showing where the metadata will be saved and the format encodings.>file://figures/Tonel.png|width=75|label=Tonel+
 
-When continuing, Iceberg shows you the files that you are actually commit as shown in Figure *@PublishingMetaData*
+After accepting the project details, Iceberg shows you the files that you will be committing as shown in Figure *@PublishingMetaData*
 
-+Details of meta data commit.>file://figures/PublishingMetaData.png|width=75|label=PublishingMetaData+
++Details of metadata commit.>file://figures/PublishingMetaData.png|width=75|label=PublishingMetaData+
 
-Once you have commited the meta-data, Iceberg shows you that your project is repaired but not loaded as shown in Figure *@SavedMetaData*. This is normal since up until now we did not add package to our project. 
-But your local repository is ready.
+Once you have commited the metadata, Iceberg shows you that your project has been repaired but is not loaded as shown in Figure *@SavedMetaData*. This is normal since we haven't added any packages to our project yet. 
+Your local repository is ready, so let's do that now.
 
-+The package is clean, meta-data are saved, but it is not loaded.>file://figures/SavedMetaData.png|width=75|label=SavedMetaData+
++The package is clean, metadata are saved, but it is not loaded.>file://figures/SavedMetaData.png|width=75|label=SavedMetaData+
 
 !!! Adding and commiting your package
-Once you project contains Iceberg meta-data, Iceberg will be able to manage it easily. 
-Double click on your project and add your package by pressing the + (Add Package) button as shown by Figure *@WithAPackage*.
+Once your project contains Iceberg metadata, Iceberg will be able to manage it easily. 
+Double click on your project and add a package by pressing the + (Add Package) button as shown by Figure *@WithAPackage*.
 
 +Adding a package to your project.>file://figures/WithAPackage.png|width=75|label=WithAPackage+
 
-Again Iceberg shows that your package contains changes that are not commited using the green color and the * in front of the package name.
+Again, Iceberg shows that your package contains changes that are not commited using the green color and the * in front of the package name.
 
 Now you are left with two actions:
 - Commit the changes to your local repository using the Commit button. Iceberg will reflect this change by removing the * and the changing the color. 
-You can commit several times. 
-- Publishing your changes from your local directory to your remote repository using the Push button. 
+You can commit several times if needed. 
+- Publish your changes from your local directory to your remote repository using the Push button. 
 
-When you push your changes, Iceberg will show you all the commits that you already did and it will push all the changes
-that are present toyour remote repository as shown in Figure *@Push*. The figure shows the commits we did to add a baseline
-and this is what we will do now. 
-Indeed what is left to do is to define a baseline to make sure that you can easily load your project in another image.
+When you push your changes, Iceberg will show you all the commits awaiting publication and will push them to your remote repository as shown in Figure *@Push*. The figure shows the commits we are about to make to add a baseline, which will allow you to easily load your project in other images.
 
 
 +Publishing your commited changes.>file://figures/push.png|width=75|label=Push+
@@ -172,10 +169,9 @@ Indeed what is left to do is to define a baseline to make sure that you can easi
 
 !!! Defining a BaselineOf
 
-A BaselineOf is a description of the project architecture.
-You will express the dependencies between packages and other projects so that all the dependent projects are loaded without
-the user to have to understand and bother about them.
-A baseline is expressed as a subclass of ==BaselineOf== and packaged in a package named =='BaselineOfXXX'==.
+A BaselineOf is a description of a project's architecture.
+You will express the dependencies between your packages and other projects so that all the dependent projects are loaded without the user having to understand and bother about them.
+A baseline is expressed as a subclass of ==BaselineOf== and packaged in a package named =='BaselineOfXXX'== (where 'XXX' is the name of your project).
 
 So if you have no dependencies, you can have something like this.
 
@@ -194,34 +190,34 @@ BaselineOfMyCoolProjectWithPharo >> baseline: spec
 			spec group: 'default' with: #('FileDialog') ]
 ]]]
 
-Once you have defined the baseline, you should add it to your project as shown in Figure *@WithBaseline*.
-And you should commit it and push your changes to your remote repository.
+Once you have defined your baseline, you should add it to your project as shown in Figure *@WithBaseline*.
+Now, commit it and push your changes to your remote repository.
 
 +With a Baseline.>file://figures/WithBaseline.png|width=75|label=WithBaseline+
 
-The online documentation available at: *https://github.com/pharo-open-documentation/pharo-wiki/blob/master/General/Baselines.md*.
+The online baseline documentation is available at: *https://github.com/pharo-open-documentation/pharo-wiki/blob/master/General/Baselines.md*.
 
 
 !!! Loading from an existing repository
 
-If you already have repository, and you just want to load it into Pharo, you can do it in two ways.
-The first one is as we did above. You can select a package and manually load it.
+If you already have a repository, and you just want to load it into Pharo, there are two ways to go about it.
+The first is as we did above. You can select a package and manually load it.
 
-The second one makes use of Metacello. This will however only work if you have already created a BaselineOf.
-With baseline, you can just do
+The second makes use of Metacello. However, this will only work if you have already created a ==BaselineOf==.
+In this case, you can just do:
 
 [[[
 Metacello new
 	baseline: 'MyCoolFirstProjectWithPharo';
-	repository: 'github://Ducasse/MyCoolProjectWithPharo/src';
+	repository: 'github://Ducasse/MyCoolProjectWithPharo';
 	load
 ]]]
 
-Do not forget the ==/src== at the end if you have created a subdirectory for the code!
+For projects with metadata, like the one we just created, that's it. However, if you are loading a project without metadata, you must add the code subfolder to the end of the repository string i.e. 'github://Ducasse/MyCoolProjectWithPharo/src'.
 
 !!! [Optional] Add a nice .gitignore file
 
-Iceberg manages automatically such files.
+Iceberg automatically manages such files.
 [[[
 # For Pharo 70 and up
 # http://www.pharo.org
@@ -249,15 +245,15 @@ github-*.zip
 
 !! Empowering your projects
 
-Now that you can save like a breeze your code on github you can take advantage of services
-to automate actions using Travis for example.
+Now that you can save your code on github in a breeze, you can take advantage of services
+to automate actions, for example using Travis.
 
 !!! Adding Travis integration
 
-By adding two simple files, you can get the tests of your project being run after each commit with travis.
-You need to enable the travis of your github repository. Check on your travis account. 
+By adding two simple files, you can have the tests of your project automatically run after each commit with travis.
+You need to enable travis in your github repository. Check your travis account. 
 
-And you should add the two following files: ==.travis.yml== and ==.smalltalk.ston== on the top level of your 
+You should also add the two following files: ==.travis.yml== and ==.smalltalk.ston== in the top level of your 
 repository. 
 
 ==.travis.yml==
@@ -284,10 +280,10 @@ SmalltalkCISpec {
 }
 ]]]
 
-If you’ve done everything right Travis will pick up the changes and will start testing and building it… and you’re done, congratulations!
+If you’ve done everything right, Travis will pick up the changes and will start testing and building it… and you’re done, congratulations!
 
 !!! On windows
-If you want to make sure that your code runs on windows you should use the Appveyor service and add the appveyor.yml file.
+If you want to make sure that your code runs on windows, you should use the Appveyor service and add the appveyor.yml file.
 
 [[[
 environment:
@@ -319,7 +315,7 @@ test_script:
 !!! Adding badges
 
 With CI happily running, you can add a badge to your readme that will show the current status of your project.
-Here is the one of the Containers-Stack project where we enabled the coveralls.io service to get the coverage of test computed and displayed too.
+Here is the badge of the Containers-Stack project where we also enabled the coveralls.io test coverage service.
 
 [[[
 # Containers-Stack
@@ -347,20 +343,20 @@ Metacello new
 ]]]
 
 
-To obtain the necessary link, click on the badge in your Travis project overview and select one of the options. You can insert the markdown code directly to your README.md.
+To obtain the necessary link, click on the badge in your Travis project overview and select one of the options. You can insert the markdown code directly into your README.md.
 
 !! Understanding the architecture
 
 !!! Glimpse at the architecture
 
-As git is distributed versioning, you will need a local clone of the repository.
-You commit to your local clone, and from there you push to github or other places.
+As git is distributed versioning, you will need a local clone of your repository.
+You commit to your local clone, and from there you push to remote repositories like github.
 
 Figure *@architecture* shows the architecture of the system. 
 
 - You have your code in the Pharo image.
 - Pharo is acting as a working copy (it contains the contents of the git local repository).
-- Iceberg manages the publication of your code into the git working copy and the git local repository.
+- Iceberg manages the publication of your code to the git working copy and the git local repository.
 - Iceberg manages the publication of your code to remote repositories.
 - Iceberg manages the resynchronisation of your image with the git local repository, git remote repositories and the git working copy.
 
