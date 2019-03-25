@@ -1,5 +1,6 @@
-!Managing your code with Iceberg
+!Manage your code with Iceberg
 
+The authors want to thank Sean de Nigris and Stefan Eggermont for the reviews and copy-edit for the early version.
 
 ${inputFile:path=Chapters/Started/started.pillar}$
 ${inputFile:path=Chapters/Started/glossary.pillar}$
