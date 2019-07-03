@@ -369,7 +369,7 @@ Figure *@architecture* shows the architecture of the system.
 
 The Pharo Project is also in Github. You can contribute with Pharo Project fixing some issues and doing a Pull Request in the official repository. You can see the issues on Pharo Github repository: github.com/pharo-project/pharo/issues. To be able to do this, you need a fork of Pharo repository. 
 
-You don't need update your fork often. But sometimes, you would like to update your fork with the oficial Pharo repository and you can do this very easy using Iceberg or using the command line. This chapter you will learn how to update a ==Branch== in you repository. If you want to update all your repository, just repeate this procedure to all the branches.
+You don't need to update your fork often. But sometimes, you would like to update your fork with the official Pharo repository and you can do this very easy using Iceberg or using the command line. This chapter you will learn how to update a ==Branch== in your repository. If you want to update all your repository, just repeat this procedure to all the branches.
 
 
 !!! For the impatient
@@ -386,8 +386,8 @@ This procedure has 3 steps:
 
 !!!! Step 1 – Create a new image and sincronize your remote repository
 
-Create a new Pharo Image and open Iceberg. The status of pharo repository should be ==Local repository missing==. We need to repair it. Go to ""Repair repository"" and chose ""Clone again this repository"". 
-Enter the informations of your fork (your Github username/pharo) and select HTTPS, as shown in Figures *@RepairRepository*, *@CloneAgain* and *@CloneGithub*.
+Create a new Pharo Image and open Iceberg. The status of Pharo repository should be ==Local repository missing==. We need to repair it. Go to ""Repair repository"" and chose ""Clone again this repository"". 
+Enter the information of your fork (your Github username/pharo) and select HTTPS, as shown in Figures *@RepairRepository*, *@CloneAgain* and *@CloneGithub*.
 
 +Repair Repository.>file://figures/PharoFork_RepairRepository.png|width=75|label=RepairRepository+
 +Clone Again.>file://figures/PharoFork_CloneAgain.png|width=75|label=CloneAgain+
@@ -397,17 +397,17 @@ If the error in Figure *@* happens, just ignore it, ""close all"" windows and op
 
 +Error.>file://figures/PharoFork_Error.png|width=75|label=Error+
 
-The status of your image can be ""Uncommited changes"" or ""Fetch required"". Follow the option a or b:
+The status of your image can be ""Uncommitted changes"" or ""Fetch required"". Follow the option a or b:
 
-- a) In the first case, if the status of your image go to ""Uncommited changes"", as shown in Figure *@PharoFork_FetchUncommited*, you need to do a ""Fetch"" to download your repository data and sincronize it with your local image and go to ""Step 2"".
+- a) In the first case, if the status of your image goes to ""Uncommitted changes"", as shown in Figure *@PharoFork_FetchUncommited*, you need to do a ""Fetch"" to download your repository data and sincronize it with your local image and go to ""Step 2"".
 
-+Fetch Uncommited.>file://figures/PharoFork_FetchUncommited.png|width=75|label=FetchUncommited+
++Fetch Uncommitted.>file://figures/PharoFork_FetchUncommited.png|width=75|label=FetchUncommited+
 
 - b) In this second case, ""Fetch required"", as shown in Figure *@FetchRequired*,do a ""Fetch"" in the repository and follow the next steps.
 
 +Fetch Required.>file://figures/PharoFork_FetchRequired.png|width=75|label=FetchRequired+
 
-Now the new status of your image is ""Detached Working Copy"" as show in Figure *@Detached*. To fix it, go to ""Repair repository"", select ""Discard image changes"", select this option to do checkout ""DO NOT CHECKOUT any packages"" and press ""Checkout"" button, as show in Figures *@DiscardImage* and *@DoNotCheckout*. 
+Now the new status of your image is ""Detached Working Copy"" as shown in Figure *@Detached*. To fix it, go to ""Repair repository"", select ""Discard image changes"", select this option to do checkout ""DO NOT CHECKOUT any packages"" and press ""Checkout"" button, as shown in Figures *@DiscardImage* and *@DoNotCheckout*. 
 
 +Detached.>file://figures/PharoFork_Detached.png|width=75|label=Detached+
 +Discard Image.>file://figures/PharoFork_DiscardImage.png|width=75|label=DiscardImage+
@@ -421,16 +421,16 @@ Now you need to create a ""New branch"", because we need to delete our local bra
 +New Branch Temporary.>file://figures/PharoFork_NewBranchTemporary.png|width=75|label=NewBranchTemporary+
 
 
-Now we are going to delete the local branch. Select ""Repository"", select in local ""Branches"" the branch that you want to update and than delete it. In this case ""Pharo8.0"", as show in Figure *@SelectRepository* and *@DeleteBranch*.
+Now we are going to delete the local branch. Select ""Repository"", select in local ""Branches"" the branch that you want to update and then delete it. In this case ""Pharo8.0"", as shown in Figure *@SelectRepository* and *@DeleteBranch*.
 
 +Select Repository.>file://figures/PharoFork_SelectRepository.png|width=75|label=SelectRepository+
 +Delete Branch.>file://figures/PharoFork_DeleteBranch.png|width=75|label=DeleteBranch+
 
-Now you can do ""Checkout branch"" in the remote branch. Go to ""Remotes/pharo-project"" and select ""Checkout branch"" in ""Pharo8.0"" as show in Figure *@CheckoutRemoteBranch*.
+Now you can do ""Checkout branch"" in the remote branch. Go to ""Remotes/pharo-project"" and select ""Checkout branch"" in ""Pharo8.0"" as shown in Figure *@CheckoutRemoteBranch*.
 
 +Checkout Remote Branch.>file://figures/PharoFork_CheckoutRemoteBranch.png|width=75|label=CheckoutRemoteBranch+
 
-Be sure you are selected this option to do checkout ""DO NOT CHECKOUT any packages"" as Figure *@DoNotCheckoutRemote*. This means we are going to update only the local repository, without apply the new changes in the current image.
+Be sure you have selected this option to do checkout ""DO NOT CHECKOUT any packages"" as Figure *@DoNotCheckoutRemote*. This means we are going to update only the local repository, without applying the new changes in the current image.
 
 +Do Not Checkout Remote.>file://figures/PharoFork_DoNotCheckoutRemote.png|width=75|label=DoNotCheckoutRemote+
 
@@ -444,14 +444,14 @@ Be sure you are selecting your repository to Push in it. Enter your Github login
 
 +Push Your Remote.>file://figures/PharoFork_PushYourRemote.png|width=75|label=PushYourRemote+
 
-The status of repository in Iceberg is ""Uncommited changes"", but you don't need commit it. Your Github repository already is update as show in Figures *@FinalIcebergStatus* and *@FinalGithubStatus*. 
+The status of the repository in Iceberg is ""Uncommitted changes"", but you don't need to commit it. Your Github repository already is updated as shown in Figures *@FinalIcebergStatus* and *@FinalGithubStatus*. 
 
 +Final Iceberg Status.>file://figures/PharoFork_FinalIcebergStatus.png|width=75|label=FinalIcebergStatus+
 +Final Github Status.>file://figures/PharoFork_FinalGithubStatus.png|width=75|label=FinalGithubStatus+
 
-!!! Update your Pharo fork using command line
+!!! Update your Pharo fork using the command line
 
-You can also update your Pharo fork using command line in 6 commands. You need to have a git command line installed:
+You can also update your Pharo fork using the command line in 6 commands. You need to have a git command line installed:
 
 # $ git clone https://github.com/YOUR-USER-NAME/pharo.git
 # $ cd Pharo
