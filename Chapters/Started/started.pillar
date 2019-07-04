@@ -95,7 +95,7 @@ We specify the owner, project, and physical location where the local clone and g
 
 +Cloning new project.>file://figures/Cloning.png|width=75|label=Cloning+
 
-Iceberg has now added your project to its list of managed projects and cloned an empty repository to your disk. You will see the status of your project, as in figure *@FirstTimeCloned*
+Iceberg has now added your project to its list of managed projects and cloned an empty repository to your disk. You will see the status of your project, as in Figure *@FirstTimeCloned*
 
 Here is a breakdown of what you are seeing:
 - MyCoolProjectWithPharo has a star and is green. This usually means that you have changes which haven't been committed yet, but may also happen in unrelated edge cases like this one. Don't worry about this for now.
@@ -243,6 +243,43 @@ github-*.zip
 ]]]
 
 
+!!! Going further:  Understanding the architecture
+
+As git is a distributed versioning, you need a local clone of your repository.
+In general you edit your working copy located on your disc and 
+you commit to your local clone, and from there you push to remote repositories like github. We explain now the specificity of managing Pharo with git. 
+
+Now when coding Pharo, you should understand that you are not directly editing your local working copy, you are modifying objects that represent classes and methods that are living in the Pharo environment. 
+Therefore it is like you have a double working copy: Pharo itself and the git working copy. 
+
+When you use Git command lines,  you have to understand that there is the code in the image and the code in the working code (and your local clone). So to update your image, you have to update your git working copy and load code from the working to the image. To save your code you have to save the code to files, add then to your git working copy and commit them to your clone.
+
+Now the interesting part is that Iceberg manages all this for you transparently. 
+All the synchronisation between these two working copies is done behind the scene.
+
+Figure *@architecture* shows the architecture of the system. 
+
+- You have your code in the Pharo image.
+- Pharo is acting as a working copy (it contains the contents of the git local repository).
+- Iceberg manages the publication of your code to the git working copy and the git local repository.
+- Iceberg manages the publication of your code to remote repositories.
+- Iceberg manages the resynchronisation of your image with the git local repository, git remote repositories and the git working copy.
+
++Architecture.>file://figures/architecture.png|width=75|label=architecture+
+
+
+!!! Conclusion
+
+You know now the essential aspects of managing your code with github.
+Iceberg has been designed to guide you so listen to it. 
+Now you are ready to use services offered around GitHub to improve your  quality.
+
+
+
+
+
+
+
 
 !! Empowering your projects
 
@@ -346,120 +383,8 @@ Metacello new
 
 To obtain the necessary link, click on the badge in your Travis project overview and select one of the options. You can insert the markdown code directly into your README.md.
 
-!! Understanding the architecture
-
-!!! Glimpse at the architecture
-
-As git is distributed versioning, you will need a local clone of your repository.
-You commit to your local clone, and from there you push to remote repositories like github.
-
-Figure *@architecture* shows the architecture of the system. 
-
-- You have your code in the Pharo image.
-- Pharo is acting as a working copy (it contains the contents of the git local repository).
-- Iceberg manages the publication of your code to the git working copy and the git local repository.
-- Iceberg manages the publication of your code to remote repositories.
-- Iceberg manages the resynchronisation of your image with the git local repository, git remote repositories and the git working copy.
-
-+Create a new project.>file://figures/architecture.png|width=75|label=architecture+
 
 
 
-!! Update your Pharo fork with the official repository
-
-The Pharo Project is also in Github. You can contribute with Pharo Project fixing some issues and doing a Pull Request in the official repository. You can see the issues on Pharo Github repository: github.com/pharo-project/pharo/issues. To be able to do this, you need a fork of Pharo repository. 
-
-You don't need to update your fork often. But sometimes, you would like to update your fork with the official Pharo repository and you can do this very easy using Iceberg or using the command line. This chapter you will learn how to update a ==Branch== in your repository. If you want to update all your repository, just repeat this procedure to all the branches.
 
 
-!!! For the impatient
-
-If you do not want to read anything, you can follow only the images. There is one to each click you do.
-
-!!! Update your Pharo fork using Iceberg in 3 steps
-
-This procedure has 3 steps: 
-
-# Create a new image and sincronize your remote repository
-# Synchronize your local repository with official Pharo repository
-# Push the updated data to your remote repository 
-
-!!!! Step 1 – Create a new image and sincronize your remote repository
-
-Create a new Pharo Image and open Iceberg. The status of Pharo repository should be ==Local repository missing==. We need to repair it. Go to ""Repair repository"" and chose ""Clone again this repository"". 
-Enter the information of your fork (your Github username/pharo) and select HTTPS, as shown in Figures *@RepairRepository*, *@CloneAgain* and *@CloneGithub*.
-
-+Repair Repository.>file://figures/PharoFork_RepairRepository.png|width=75|label=RepairRepository+
-+Clone Again.>file://figures/PharoFork_CloneAgain.png|width=75|label=CloneAgain+
-+Clone Github.>file://figures/PharoFork_CloneGithub.png|width=75|label=CloneGithub+
-
-If the error in Figure *@* happens, just ignore it, ""close all"" windows and open Iceberg again.
-
-+Error.>file://figures/PharoFork_Error.png|width=75|label=Error+
-
-The status of your image can be ""Uncommitted changes"" or ""Fetch required"". Follow the option a or b:
-
-- a) In the first case, if the status of your image goes to ""Uncommitted changes"", as shown in Figure *@PharoFork_FetchUncommited*, you need to do a ""Fetch"" to download your repository data and sincronize it with your local image and go to ""Step 2"".
-
-+Fetch Uncommitted.>file://figures/PharoFork_FetchUncommited.png|width=75|label=FetchUncommited+
-
-- b) In this second case, ""Fetch required"", as shown in Figure *@FetchRequired*,do a ""Fetch"" in the repository and follow the next steps.
-
-+Fetch Required.>file://figures/PharoFork_FetchRequired.png|width=75|label=FetchRequired+
-
-Now the new status of your image is ""Detached Working Copy"" as shown in Figure *@Detached*. To fix it, go to ""Repair repository"", select ""Discard image changes"", select this option to do checkout ""DO NOT CHECKOUT any packages"" and press ""Checkout"" button, as shown in Figures *@DiscardImage* and *@DoNotCheckout*. 
-
-+Detached.>file://figures/PharoFork_Detached.png|width=75|label=Detached+
-+Discard Image.>file://figures/PharoFork_DiscardImage.png|width=75|label=DiscardImage+
-+Do Not Checkout.>file://figures/PharoFork_DoNotCheckout.png|width=75|label=DoNotCheckout+
-
-!!!! Step 2 – Synchronize your local repository with official Pharo repository
-
-Now you need to create a ""New branch"", because we need to delete our local branch to load it from the official repository, as Figure *@CheckoutBranch* and *@NewBranchTemporary*.
-
-+Checkout Branch.>file://figures/PharoFork_CheckoutBranch.png|width=75|label=CheckoutBranch+
-+New Branch Temporary.>file://figures/PharoFork_NewBranchTemporary.png|width=75|label=NewBranchTemporary+
-
-
-Now we are going to delete the local branch. Select ""Repository"", select in local ""Branches"" the branch that you want to update and then delete it. In this case ""Pharo8.0"", as shown in Figure *@SelectRepository* and *@DeleteBranch*.
-
-+Select Repository.>file://figures/PharoFork_SelectRepository.png|width=75|label=SelectRepository+
-+Delete Branch.>file://figures/PharoFork_DeleteBranch.png|width=75|label=DeleteBranch+
-
-Now you can do ""Checkout branch"" in the remote branch. Go to ""Remotes/pharo-project"" and select ""Checkout branch"" in ""Pharo8.0"" as shown in Figure *@CheckoutRemoteBranch*.
-
-+Checkout Remote Branch.>file://figures/PharoFork_CheckoutRemoteBranch.png|width=75|label=CheckoutRemoteBranch+
-
-Be sure you have selected this option to do checkout ""DO NOT CHECKOUT any packages"" as Figure *@DoNotCheckoutRemote*. This means we are going to update only the local repository, without applying the new changes in the current image.
-
-+Do Not Checkout Remote.>file://figures/PharoFork_DoNotCheckoutRemote.png|width=75|label=DoNotCheckoutRemote+
-
-!!!! Step 3 – Push the updated data to your remote repository 
-
-Select ""Push"" as Figure *@*.
-
-+Push.>file://figures/PharoFork_Push.png|width=75|label=Push+
-
-Be sure you are selecting your repository to Push in it. Enter your Github login and now you have your Github repository updated with the official Github Pharo Project Repository, as Figure *@PushYourRemote*.
-
-+Push Your Remote.>file://figures/PharoFork_PushYourRemote.png|width=75|label=PushYourRemote+
-
-The status of the repository in Iceberg is ""Uncommitted changes"", but you don't need to commit it. Your Github repository already is updated as shown in Figures *@FinalIcebergStatus* and *@FinalGithubStatus*. 
-
-+Final Iceberg Status.>file://figures/PharoFork_FinalIcebergStatus.png|width=75|label=FinalIcebergStatus+
-+Final Github Status.>file://figures/PharoFork_FinalGithubStatus.png|width=75|label=FinalGithubStatus+
-
-!!! Update your Pharo fork using the command line
-
-You can also update your Pharo fork using the command line in 6 commands. You need to have a git command line installed:
-
-# $ git clone https://github.com/YOUR-USER-NAME/pharo.git
-# $ cd Pharo
-# $ git remote add pharo https://github.com/pharo-project/pharo.git 
-# $ git fetch pharo
-# $ git pull pharo Pharo8.0
-# $ git push origin Pharo8.0
-
-You can see the results in Figure *@CommandLine*.
-
-+Command Line.>file://figures/PharoFork_CommandLine.png|width=75|label=CommandLine+

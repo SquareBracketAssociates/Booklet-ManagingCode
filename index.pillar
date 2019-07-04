@@ -11,6 +11,7 @@ The authors want to thank Sean de Nigris and Stefan Eggermont for the reviews an
 
 
 ${inputFile:path=Chapters/Started/started.pillar}$
+${inputFile:path=Chapters/Started/pharo.pillar}$
 ${inputFile:path=Chapters/Started/glossary.pillar}$
 
 
