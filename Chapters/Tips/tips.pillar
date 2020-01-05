@@ -1,0 +1,14 @@
+!! Tips and Tricks
+
+!!! How to contribute back to a project
+
+I cloned a project from a Github repo I don't have any write permissions, I made some changes, and I'd like to send a pull-request to it, what is the "Iceberg way" of doing it?
+Manually I'd fork the project in Github, add a remote to the local repo, push the changes to this new remote and then create the pull request in Github.
+
+In Iceberg follow the git way
+
+#. Create fork on Github and add to Iceberg (Repositories context menu then "Repository" and then =="+ Repository"==
+#. Create issue branch in Iceberg (Repositories context menu then GitHub then Create new branch for issue)
+#. Commit from Iceberg
+#. Push to fork from Iceberg
+#. Create pull request from Iceberg (Repositories context menu then GitHub then Create Pull Request)
