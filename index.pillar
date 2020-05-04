@@ -7,6 +7,8 @@ A first version was introduced with Pharo 6.0.
 A major effort went into the version of Iceberg presents in Pharo 7.0. 
 We are using the version of Iceberg available in Pharo 8.0.
 
+This document is under writing but we decided to release before its completion 
+because managing code can be a large topic when we start to discuss workflow and process. 
 The authors want to thank Sean de Nigris and Stefan Eggermont for the reviews and copy-edit for the early version.
 
 
