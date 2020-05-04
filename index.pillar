@@ -5,7 +5,7 @@ It makes the experience of managing code really smooth.
 Iceberg evolved over the years.
 A first version was introduced with Pharo 6.0.
 A major effort went into the version of Iceberg presents in Pharo 7.0. 
-This is this version that we are referring to.
+We are using the version of Iceberg available in Pharo 8.0.
 
 The authors want to thank Sean de Nigris and Stefan Eggermont for the reviews and copy-edit for the early version.
 
