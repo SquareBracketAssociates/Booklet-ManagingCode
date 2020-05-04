@@ -1,70 +1,46 @@
-!! Publishing your first project
+!! Publishing your first Pharo project
 
 In this chapter we explain how you can publish your project on github using Iceberg.
-We do not explain concepts like commit, push/pull, merging, or cloning.
-We thank Peter Uhnak for his first blog on publishing Pharo code on Github.
+We do not explain basic concepts like commit, push/pull, merging, or cloning.
 
-As git is distributed versioning system, you need a local clone of the repository. 
-This is to this local repository that your changes will be commited to before being pushed to remote repositories.
-In general you commit to your local clone, and from there you push to remote repositories like  github or gitlab, or that of your company.
-Iceberg will do all the operations and more for you.
+A strong precondition before reading this chapter is that you must be able to publish from the command line 
+to the git hosting service that you want to use. If you cannot do not expect Iceberg to fix it magically for you. You can have a look in Chapter *@cha:tips* the section explaining how to generate SSH keys. 
+We thank Peter Uhnak for his first blog on publishing Pharo code on Github.
+Let us get started.
 
 !!! For the impatient
 
-If you do not want to read anything, here is the executive summary.
+If you do not want to read everything, here is the executive summary.
 
 - Create a project on github or any git-based platform.
-- Configure Iceberg to use custom ssh keys
-- Open Iceberg.
-- Add a project (chose clone from ...).
-- Optionally, in the cloned repository, create a directory named ==src== on your file system using either the FileList or your command line.
-- Open your project and add your packages (It is always good to add a baseline).
+- Configure Iceberg to use custom ssh keys.
+- Add a project in Iceberg.
+-- Optionally, in the cloned repository, create a directory named ==src== on your file system. This is a good convention.
+- In Iceberg, open your project and add your packages (It is always good to add a baseline).
 - Commit your project.
-- Push it to your remote repository.
+- Push your change to your remote repository.
 
 You are done. Now we can explain calmly.
 
-!!! Iceberg setup 
 
+!!! Architecture
+
+As git is a distributed versioning system, you need a local clone of the repository (usually on your machine). This is to this local repository that your changes will be commited to before being pushed to remote repositories.
+In general you commit to your local clone, and from there you push to remote repositories like  github or gitlab, or that of your company.
+Iceberg will do all the operations and more for you.
+
+
+!!! Iceberg setup: Tell Pharo to use your keys
 To be able to commit to your git project, you will need to set up valid credentials in your system.
 In case you use SSH (the default way), you will need to make sure those keys are available to your github account and also that the shell adds them for smoother communication with the server. 
+See the Chapter *@cha:tips* Tips and Tricks for some help with setting up your ssh keys. 
 
-In case SSH is not setup (and you will notice as soon as you try to clone a project or commit a change to one), you can add SSH keys by following these steps (on Windows, if you want a nice command line environment, install **http://mingw.org/wiki/msys*): 
-
-!!!! Generating a key pair
-
-To do this, execute the command:
-[[[
-ssh-keygen -t rsa
-]]]
-
-It will generate a private and a public key (on a unix-based installation in the directory ==.ssh==). 
-You should copy your ==id_rsa.pub== key to your github account.
-Keep the keys in a safe place.
-
-On Windows, you can follow instructions on how to generate your keys at *http://guides.beanstalkapp.com/version-control/git-on-windows.html#installing-ssh-keys*.
-
-!!!! Adding the key to your ssh
-
-In linux, execute in your shell:
-[[[
-ssh-add ~/.ssh/id_rsa
-]]]
-
-In OSX, execute in your shell:
-[[[
-ssh-add -K ~/.ssh/id_rsa
-]]]
-
-For both OSX and linux you can add such lines to your ==.bash_profile== (or the one corresponding to your shell installation such as ==.zshrc==) so they are automatically executed on each new shell session.
-
-!!!! Tell Pharo to use your keys
 
 Go to settings browser, search for "Use custom SSH keys" and enter your data there as shown in Figure *@UseCustom*).
 
 +Use Custom SSH keys settings.>file://figures/useCustom.png|width=75|label=UseCustom+
 
-Alternatively, you can execute the following expressions in your image playground or add them to your Pharo system preference file:
+Alternatively, you can execute the following expressions in your image playground or add them to your Pharo system preference file (See Menu System item startup):
 
 [[[
 IceCredentialsProvider useCustomSsh: true.
@@ -76,41 +52,54 @@ IceCredentialsProvider sshCredentials
 @@note ""Pro Tip:"" this can be used too in case you have a non-default key file. You just need to replace ==id_rsa== with your file name.
 
 
-!!! Create a new project on github
-
-Figure *@onGitHub* shows the creation of a project on Github. 
+!!! Create a new project on Github
+While you can save locally first and then later create a remote repository we first create a new project on Github. Figure *@onGitHub* shows the creation of a project on Github. 
+The order does not really matter. What is different is that you should use different options when add a repository to Iceberg as we will show later.
 
 +Create a new project.>file://figures/onGitHub.png|width=75|label=onGitHub+
 
 
-!!! Add a new project to Iceberg
+!!! Opening Iceberg
 
+Figure *@freshiceberg* shows the top level Iceberg pane. 
+It shows that for now you do not have define or loaded any project. It shows the Pharo project and indicates that it could not find the local repository of Pharo with 'Local repository missing'. 
+
+First you do not have to worry about the  Pharo or repository if you do not want to contribute to Pharo. 
+So just go ahead. Now if you want to understand what is happening here is the explanation. 
+The Pharo system does not have any idea where it should look for the git repository corresponding to the source of the classes it contains. Indeed, the image you are executing may have being build somewhere, patched or not many times. Now Pharo can fully execute without having a local repository. You can browse system classes and methods because Pharo has its own internal source management. This warning just indicates that if you want to version Pharo system code using git then you should indicate to the system where the clone is located on your local machine. 
+
++Opening Iceberg on fresh image indicates that if you want to version modifications to pharo itself you will have to tell iceberg where the Pharo clone is located.>file://figures/S1-OpeningIceberg.png|width=75|label=freshiceberg+
+
+
+!!! Add a new project to Iceberg
 
 The first step is then to add a project to Iceberg:
 - Press the '+' button to the right of the Iceberg main window.
-- Select the source of your project. In our example, since you did not clone your project yet, choose the github option.
+- Select the source of your project. In our example, since you did not clone your project yet, choose the Github option.
 
-Figure *@Cloning* shows that we are cloning the repository we just created. 
+Figure *@Cloning* instructs Iceberg to clone the repository we just created. 
 We specify the owner, project, and physical location where the local clone and git working copy will be on your disk.
 
-+Cloning new project.>file://figures/Cloning.png|width=75|label=Cloning+
++Cloning a project.>file://figures/S5-CloneFromGithub.png|width=75|label=Cloning+
 
-Iceberg has now added your project to its list of managed projects and cloned an empty repository to your disk. You will see the status of your project, as in Figure *@FirstTimeCloned*
+Iceberg has now added your project to its list of managed projects and cloned an empty repository to your disk. You will see the status of your project, as in Figure *@FirstTimeCloned*.
 
 Here is a breakdown of what you are seeing:
 - MyCoolProjectWithPharo has a star and is green. This usually means that you have changes which haven't been committed yet, but may also happen in unrelated edge cases like this one. Don't worry about this for now.
 - The Status of the project is 'No Project Found' and this is more important. This is normal since the project is empty. Iceberg cannot find its metadata. We will fix this soon.
 
-+Just after cloning an empty project.>file://figures/FirstTimeCloned.png|width=75|label=FirstTimeCloned+
++Just after cloning an empty project.>file://figures/S6-ProjectNotFound.png|width=75|label=FirstTimeCloned+
 
 !!! [Optional but strongly suggested] Adding a src directory
 
 Some developers like to group all their code in a directory named ==src== and this is a nice practice. 
 We strongly suggest that you follow it.
 You can go to your filesystem and create one in your repository. 
+
 You can also use the Pharo FileList Browser to do it as shown in Figure *@WithSrc*.
 
 +Adding an src folder to a repository.>file://figures/WithSrc.png|width=75|label=WithSrc+
+
 
 
 !!! Repair to the rescue
@@ -161,11 +150,35 @@ You can commit several times if needed.
 
 When you push your changes, Iceberg will show you all the commits awaiting publication and will push them to your remote repository as shown in Figure *@Push*. The figure shows the commits we are about to make to add a baseline, which will allow you to easily load your project in other images.
 
-
 +Publishing your committed changes.>file://figures/push.png|width=75|label=Push+
 
 
+!!! What if I do not have created a remote repository
 
+At the beginning of this chapter we started by create a remote repository on Github. 
+Then we asked Iceberg to add a project by cloniong from Github. 
+Now you may ask yourself what is the process to publish first your project locally without a pre-existing repository. This is actually simple.
+
+!!!! Create a new repository. 
+When you add a new repository use the 'New repository' option as shown in *@NewRepo*.
+ 
++Creating a local repository without pre-existing remote repository .>file://figures/S12-NewRepository.png|width=75|label=NewRepo+
+
+!!!! Add a remote.
+If you want to then commit to a remote repository, you will have to add a repository using the repository browser you can access using the associated menu item or the icon. Figure *@OpeningRepositoryBrowser* shows the repository browser on our project.
+
++Opening the repository browser .>file://figures/S13-OpeningRepository.png|width=75|label=OpeningRepositoryBrowser+
+
+Using the 'Add remote' iconic button add a remote by just providing information that you can find in your Github project. Figure *@OpeningRepositoryBrowser* shows it for the sample project.
+
++Adding a remote.>file://figures/S14-AddingRemote.png|width=75|label=OpeningRepositoryBrowser+
+
+!!!! Push to the remote.
+
+Now you can push your changes and versions to the remote repository using the Push iconic button. 
+Once you have pushed you see that you have one remote as shown in Figure *@*.
+
++Pushing to the remote.>file://figures/S15-PushedFromReport.png|width=75|label=PushedFromReport+
 
 !!! Defining a BaselineOf
 
