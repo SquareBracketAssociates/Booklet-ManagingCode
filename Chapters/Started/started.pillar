@@ -142,15 +142,16 @@ Again, Iceberg shows that your package contains changes that are not committed u
 
 +Iceberg indicates that your package has unsaved changes -- indeed you just added your package.>file://figures/S11-Dirty.png|width=50|label=Dirty+
 
-+When you commit changes, Iceberg shows you the code about to commit and you can select .>file://figures/S11-DirtyCommit.png|width=50|label=DirtyCleaned+
-
-+Once commited Iceberg reflects that your project is in sync with the code in your local repository.>file://figures/S11-DirtyBecomeClean.png|width=50|label=DirtyBecomeClean+
 
 !!!! Commit the changes
 Commit the changes to your local repository using the Commit button as shown in Figure *@DirtyCleaned*.
-Iceberg let you cherry pick the changes you want to commit. Here this is not needed but this is an important features. Iceberg will reflect this change by removing the star and the changing the color and show that the code in the image is in sync with your local repository as shown by Figure *@DirtyBecomeClean*.
+Iceberg lets you cherry pick the changes you want to commit. Here this is not needed but this is an important features. Iceberg will reflect this change by removing the star and the changing the color and show that the code in the image is in sync with your local repository as shown by Figure *@DirtyBecomeClean*.
 You can commit several times if needed.
 
++When you commit changes, Iceberg shows you the code about to be committed and you can cherry pick 
+the code that will effectively be saved.>file://figures/S11-DirtyCommit.png|width=50|label=DirtyCleaned+
+
++Once commited Iceberg reflects that your project is in sync with the code in your local repository.>file://figures/S11-DirtyBecomeClean.png|width=50|label=DirtyBecomeClean+
 
 !!!! Publish your changes to your remote
 Now you are nearly done. Publish your changes from your local directory to your remote repository using the Push button. 

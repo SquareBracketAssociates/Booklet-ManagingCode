@@ -7,7 +7,7 @@ within your project and dependency to other projects.
 We also show how to add a good .gitignore file.
 In the next chapter we show how to configure your project to get more about services offered within the github ecosystem such as travis-ci to execute automatically your tests.
 
-
++Creating a local repository without pre-existing remote repository.>file://figures/S12-NewRepository.png|width=75|label=NewRepo+
 
 !!! What if I do not have created a remote repository
 
@@ -18,7 +18,7 @@ Now you may ask yourself what is the process to publish first your project local
 !!!! Create a new repository. 
 When you add a new repository use the 'New repository' option as shown in *@NewRepo*.
  
-+Creating a local repository without pre-existing remote repository .>file://figures/S12-NewRepository.png|width=75|label=NewRepo+
+
 
 !!!! Add a remote.
 If you want to then commit to a remote repository, you will have to add a repository using the repository browser you can access using the associated menu item or the icon. Figure *@OpeningRepositoryBrowser* shows the repository browser on our project.
