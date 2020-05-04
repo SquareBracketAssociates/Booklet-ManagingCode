@@ -1,12 +1,11 @@
 !! Empowering your projects
 
 Now that you can save your code on github in a breeze, you can take advantage of services
-to automate actions, for example using Travis.
+to automate actions, for example to execute tests using Travis (*http://www.travis-ci.com*) or AppVeyor for windows (*https://www.appveyor.com*).
 
 !!! Adding Travis integration
 
-By adding two simple files, you can have the tests of your project automatically run after each commit with travis.
-You need to enable travis in your github repository. Check your travis account. 
+By adding two simple files, you can have the tests of your project automatically run after each commit with travis. You need to enable travis in your github repository. Since travis is changing its policy: check on the web. 
 
 You should also add the two following files: ==.travis.yml== and ==.smalltalk.ston== in the top level of your 
 repository. 
@@ -38,7 +37,7 @@ SmalltalkCISpec {
 If you’ve done everything right, Travis will pick up the changes and will start testing and building it… and you’re done, congratulations!
 
 !!! On windows
-If you want to make sure that your code runs on windows, you should use the Appveyor service and add the appveyor.yml file.
+If you want to make sure that your code runs on windows, you should use the Appveyor service and add the ==appveyor.yml== file.
 
 [[[
 environment:
@@ -99,3 +98,9 @@ Metacello new
 
 
 To obtain the necessary link, click on the badge in your Travis project overview and select one of the options. You can insert the markdown code directly into your README.md.
+
+!!! Conclusion
+With such setup you make sure that you can run your software on different platforms. 
+In addition you make sure that you will be able to smoothly load your code. 
+Other services such as coveralls are available for Pharo. 
+

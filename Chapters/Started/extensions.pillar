@@ -59,12 +59,12 @@ BaselineOfMyCoolProjectWithPharo >> baseline: spec
     do: [ spec package: 'MyCoolProjectWithPharo' ]
 ]]]
 
-Once you have defined your baseline, you should add its package to your project as explain in the previous chapter. You should obtain the following situation shown in Figure *@WithBaseline*.
+Once you have defined your baseline, you should add its package to your project using the Working copy browser as explained in the previous chapter. You should obtain the following situation shown in Figure *@WithBaseline*.
 Now, commit it and push your changes to your remote repository.
 
-+With a Baseline.>file://figures/WithBaseline.png|width=75|label=WithBaseline+
++Added the baseline package to your project using the Working copy browser.>file://figures/WithBaseline.png|width=75|label=WithBaseline+
 
-A more elaborated web resources about baseline possibility is available at: https://github.com/pharo-open-documentation/pharo-wiki/blob/master/General/Baselines.md.
+A more elaborated web resources about baseline possibility is available at: *https://github.com/pharo-open-documentation/pharo-wiki/*.
 
 
 !!! Loading from an existing repository
@@ -76,9 +76,7 @@ Once you already have a repository and commited code and  just want to load it i
 - Select a package and manually load it.
 
 !!!! Scripting the load. 
-The second way is to make use of Metacello.  However, this will only work if you have already created a ==BaselineOf==.
-
-In this case, you can just execute the following snippet: 
+The second way is to make use of Metacello. However, this will only work if you have already created a ==BaselineOf==. In this case, you can just execute the following snippet: 
 
 [[[
 Metacello new
@@ -88,6 +86,7 @@ Metacello new
 ]]]
 
 For projects with metadata, like the one we just created, that's it. 
+Notice that we not only mention the github pass but also added the code folder (here ==src==).
 
 !!! [Optional] Add a nice .gitignore file
 
@@ -138,7 +137,7 @@ Figure *@architecture* shows the architecture of the system.
 - Iceberg manages the publication of your code to remote repositories.
 - Iceberg manages the resynchronisation of your image with the git local repository, git remote repositories and the git working copy.
 
-+Architecture.>file://figures/architecture.png|width=75|label=architecture+
++@@TO BE REDONE Architecture.>file://figures/architecture.png|width=75|label=architecture+
 
 
 !!! Conclusion
