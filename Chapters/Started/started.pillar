@@ -14,7 +14,7 @@ Let us get started.
 If you do not want to read everything, here is the executive summary.
 
 - Create a project on Github or any git-based platform.
-- Configure Iceberg to use custom ssh keys.
+- [Optional] Configure Iceberg to use custom ssh keys.
 - Add a project in Iceberg.
 -- Optionally, in the cloned repository, create a directory named ==src== on your file system. This is a good convention.
 - In Iceberg, open your project and add your packages (It is always good to add a baseline).
@@ -31,9 +31,8 @@ In general you commit to your local clone, and from there you push to remote rep
 Iceberg will do all the operations and more for you.
 
 
-!!! Iceberg setup: Tell Pharo to use your keys
-To be able to commit to your ==git== project, you will need to set up valid credentials in your system.
-In case you use SSH (the default way), you will need to make sure those keys are available to your Github account and also that the shell adds them for smoother communication with the server.
+!!! SSH setup: Tell Iceberg to use your keys
+To be able to commit to your ==git== project, you should either use HTTPS or you will need to set up valid credentials in your system. In case you use SSH (the default way), you will need to make sure those keys are available to your Github account and also that the shell adds them for smoother communication with the server.
 See the Chapter *@cha:tips* Tips and Tricks for some help with setting up your ssh keys.
 
 
