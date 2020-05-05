@@ -4,7 +4,8 @@ In this chapter we explain how you can publish your project on Github using Iceb
 We do not explain basic concepts like commit, push/pull, merging, or cloning.
 
 A strong precondition before reading this chapter is that you must be able to publish from the command line
-to the ==git== hosting service that you want to use. If you cannot do not expect Iceberg to fix it magically for you. You can have a look in Chapter *@cha:tips* the section explaining how to generate SSH keys.
+to the ==git== hosting service that you want to use. If you cannot do not expect Iceberg to fix it magically for you. Now if you have some problems with SSH configuration you can either use HTTPS or
+have a look in Chapter *@cha:tips* the section explaining how to generate SSH keys.
 We thank Peter Uhnak for his first blog on publishing Pharo code on Github.
 Let us get started.
 
