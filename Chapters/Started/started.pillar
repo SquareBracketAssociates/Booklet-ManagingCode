@@ -56,7 +56,7 @@ IceCredentialsProvider sshCredentials
 While you can save locally first and then later create a remote repository we first create a new project on Github. Figure *@onGithub* shows the creation of a project on Github.
 The order does not really matter. What is different is that you should use different options when add a repository to Iceberg as we will show later.
 
-+Create a new project.>file://figures/onGithub.png|width=75|label=onGithub+
++Create a new project.>file://figures/onGitHub.png|width=75|label=onGithub+
 
 
 !!! Opening Iceberg repositories browser

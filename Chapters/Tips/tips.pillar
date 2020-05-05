@@ -94,6 +94,4 @@ So one way to do what you want is
 # Change to branch even using the "Do not checkout" strategy
 # Commit in branch even a subset of changes
 
-@@note QD: not sure what the next line means
 
-Let us try if for real.
