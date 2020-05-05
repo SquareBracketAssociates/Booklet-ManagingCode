@@ -46,8 +46,57 @@ Manually you can fork the project on Github, add a remote to the local repo, pus
 With Iceberg you can do the same since Iceberg follows the git way:
 
 #. Create fork on Github 
-#. Add a repository for this project  to Iceberg (Repositories context menu then "Repository" and then =="+ Repository"==
+#. Add a repository for this project  to Iceberg (Repositories context menu then "Repository" and then =="\+ Repository"==
 #. Create an issue branch with Iceberg (Repositories context menu then GitHub then Create new branch for issue).
 #. Commit your changes with Iceberg.
 #. Push your change to your fork from Iceberg.
 #. Create pull request from Iceberg (Repositories context menu then GitHub then Create Pull Request)
+
+
+!!! How to distribute your changes in different branches
+
+We can cherry pick when we save ok so far so good.
+
+I’m in branch feature1 and I code
+m1, m2, m3, m4
+
+Now I realise too late  that it would be great to extract m2 and m4 because I would like to merge it in another branch call even.
+
+Of course I do not want to have 
+
+[[[
+even
+	| 
+	V
+odd
+	|
+	V 
+master
+]]]
+
+but
+[[[
+odd   even
+	| 		| 
+	V		V
+	master
+]]]
+
+
+To commit changes into different branches, you must change your branch. Because the "commit" always modifies the current branch. 
+
+When you change  a branch, there is first a preview. In the preview, you  have a diff and  you have a
+combobox to select a checkout strategy.
+
++Checkout choices.>file://figures/CheckoutChoices.png|width=75|label=CheckoutChoices+
+
+The default one is to reload the packages, this will override any local changes you had.
+The last one is to not load any packages: in other words, change the branch but do not touch my image.
+
+So one way to do what you want is
+# commit in branch odd by selecting a subset of changes
+# change to branch even using the "Do not checkout" strategy
+# commit in brach even a subset of changes
+
+Let us try if for real.
+
