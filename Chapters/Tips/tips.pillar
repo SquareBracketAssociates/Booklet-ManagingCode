@@ -55,10 +55,12 @@ With Iceberg you can do the same since Iceberg follows the git way:
 
 !!! How to distribute your changes in different branches
 
-We can cherry pick when we save ok so far so good. Imagine that I am in branch ==feature1== and I code
-==m1==, ==m2==, ==m3==, ==m4==. I now realize too late that it would be great to extract ==m2== and ==m4== because I would like to merge it in another branch called ==even==.
+With Iceberg we can chose the packages, classes or methods when we save. 
+Imagine that you are in branch ==odd== and you code
+==m1==, ==m2==, ==m3==, ==m4==. 
+Then later you realize too late that it would be great to extract ==m2== and ==m4== in another branch because you would like to merge it in another branch called ==even==.
 
-Of course I do not want to have
+In addition you do not want to have ==even== be a child of your ==odd== to avoid dependency.
 
 [[[
 even
@@ -79,7 +81,7 @@ but
 ]]]
 
 
-To commit changes into different branches, you must change your branch. Because the ''commit'' always modifies the current branch.
+To commit changes into different branches, you must change your branch. Because a ''commit'' always modifies the current branch.
 
 When you change  a branch, there is first a preview. In the preview, you  have a diff and  you have a
 combo-box to select a checkout strategy.

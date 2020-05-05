@@ -9,7 +9,7 @@ We are using the version of Iceberg available in Pharo 8.0.
 
 This document is under writing but we decided to release before its completion 
 because managing code can be a large topic when we start to discuss workflow and process. 
-The authors want to thank Sean de Nigris and Stefan Eggermont for the reviews and copy-edit for the early version.
+The authors want to thank Sean de Nigris, Quentin Ducasse and Stefan Eggermont for the reviews and copy-edit of the early version.
 
 
 ${inputFile:path=Chapters/Started/started.pillar}$
