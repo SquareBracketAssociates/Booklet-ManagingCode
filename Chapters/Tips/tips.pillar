@@ -1,13 +1,13 @@
 !! Tips and Tricks
 @cha:tips
 
-This chapter contains some simple recipe-oriented frequently asked questions. If you have some more please send to us or even better do PR.
+This chapter contains some simple recipe-oriented frequently asked questions. If you have some more please send them to us or even better, present a ''Pull Request''.
 
-!!! How to use SSH keys 
+!!! How to use SSH keys
 
-In case SSH is not setup (and you will notice as soon as you try to clone a project or commit a change to one), were are some simple basic points to be able to use SSH with github.
+In case SSH is not set up (and you will notice as soon as you try to clone a project or commit a change to one), there are some simple basic points to be able to use SSH with github.
 
-You can add SSH keys by following these steps (on Windows, if you want a nice command line environment, install *http://mingw.org/wiki/msys*): 
+You can add SSH keys by following these steps (on Windows, if you want a nice command line environment, install *http://mingw.org/wiki/msys*):
 
 !!!! Generate a key pair
 
@@ -16,7 +16,7 @@ To do this, execute the command:
 ssh-keygen -t rsa
 ]]]
 
-It will generate a private and a public key (on a unix-based installation in the directory ==.ssh==). 
+It will generate a private and a public key (on a unix-based installation in the directory ==.ssh==).
 You should copy your ==id_rsa.pub== key to your github account.
 Keep the keys in a safe place.
 
@@ -45,48 +45,44 @@ Manually you can fork the project on Github, add a remote to the local repo, pus
 
 With Iceberg you can do the same since Iceberg follows the git way:
 
-#. Create fork on Github 
-#. Add a repository for this project  to Iceberg (Repositories context menu then "Repository" and then =="\+ Repository"==
-#. Create an issue branch with Iceberg (Repositories context menu then GitHub then Create new branch for issue).
-#. Commit your changes with Iceberg.
-#. Push your change to your fork from Iceberg.
-#. Create pull request from Iceberg (Repositories context menu then GitHub then Create Pull Request)
+# Create fork on Github
+# Add a repository for this project  to Iceberg (Repositories context menu then "Repository" and then =="\+ Repository"==
+# Create an issue branch with Iceberg (Repositories context menu then GitHub then Create new branch for issue).
+# Commit your changes with Iceberg.
+# Push your change to your fork from Iceberg.
+# Create pull request from Iceberg (Repositories context menu then GitHub then Create Pull Request)
 
 
 !!! How to distribute your changes in different branches
 
-We can cherry pick when we save ok so far so good.
+We can cherry pick when we save ok so far so good. Imagine that I am in branch ==feature1== and I code
+==m1==, ==m2==, ==m3==, ==m4==. I now realize too late that it would be great to extract ==m2== and ==m4== because I would like to merge it in another branch called ==even==.
 
-I’m in branch feature1 and I code
-m1, m2, m3, m4
-
-Now I realise too late  that it would be great to extract m2 and m4 because I would like to merge it in another branch call even.
-
-Of course I do not want to have 
+Of course I do not want to have
 
 [[[
 even
-	| 
+	|
 	V
 odd
 	|
-	V 
+	V
 master
 ]]]
 
 but
 [[[
-odd   even
-	| 		| 
-	V		V
+ odd  even
+	| 	 |
+	V		 V
 	master
 ]]]
 
 
-To commit changes into different branches, you must change your branch. Because the "commit" always modifies the current branch. 
+To commit changes into different branches, you must change your branch. Because the ''commit'' always modifies the current branch.
 
 When you change  a branch, there is first a preview. In the preview, you  have a diff and  you have a
-combobox to select a checkout strategy.
+combo-box to select a checkout strategy.
 
 +Checkout choices.>file://figures/CheckoutChoices.png|width=75|label=CheckoutChoices+
 
@@ -94,9 +90,10 @@ The default one is to reload the packages, this will override any local changes 
 The last one is to not load any packages: in other words, change the branch but do not touch my image.
 
 So one way to do what you want is
-# commit in branch odd by selecting a subset of changes
-# change to branch even using the "Do not checkout" strategy
-# commit in brach even a subset of changes
+# Commit in branch odd by selecting a subset of changes
+# Change to branch even using the "Do not checkout" strategy
+# Commit in branch even a subset of changes
+
+@@note QD: not sure what the next line means
 
 Let us try if for real.
-
