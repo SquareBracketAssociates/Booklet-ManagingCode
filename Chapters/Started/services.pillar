@@ -1,14 +1,13 @@
 !! Empowering your projects
 
-Now that you can save your code on github in a breeze, you can take advantage of services
-to automate actions, for example to execute tests using Travis (*http://www.travis-ci.com*) or AppVeyor for windows (*https://www.appveyor.com*).
+Now that you can save your code on Github in a breeze, you can take advantage of services
+to automate actions. For example, to execute tests using *Travis>http://www.travis-ci.com*) or *AppVeyor>https://www.appveyor.com* for Windows.
 
 !!! Adding Travis integration
 
-By adding two simple files, you can have the tests of your project automatically run after each commit with travis. You need to enable travis in your github repository. Since travis is changing its policy: check on the web. 
+By adding two simple files, you can have the tests of your project automatically run after each commit with Travis. You need to enable Travis in your Github repository. Since Travis is changing its policy and work tightly in relation with Github you might have a better time checking on their respective websites.
 
-You should also add the two following files: ==.travis.yml== and ==.smalltalk.ston== in the top level of your 
-repository. 
+You should also add the two following files: ==.travis.yml== and ==.smalltalk.ston== in the top level of your repository.
 
 ==.travis.yml==
 
@@ -34,7 +33,7 @@ SmalltalkCISpec {
 }
 ]]]
 
-If you’ve done everything right, Travis will pick up the changes and will start testing and building it… and you’re done, congratulations!
+If you have done everything right, Travis will pick up the changes and will start testing and building your project… and you are done, congratulations!
 
 !!! On windows
 If you want to make sure that your code runs on windows, you should use the Appveyor service and add the ==appveyor.yml== file.
@@ -56,7 +55,7 @@ platform:
 
 install:
   - '%CYG_EXE% -dgnqNO -R "%CYG_ROOT%" -s "%CYG_MIRROR%" -l "%CYG_CACHE%" -P unzip'
-  - ps: Start-FileDownload "https://github.com/hpi-swa/smalltalkCI/archive/master.zip" "C:\smalltalkCI.zip"
+  - ps: Start-FileDownload "https://Github.com/hpi-swa/smalltalkCI/archive/master.zip" "C:\smalltalkCI.zip"
   - 7z x C:\smalltalkCI.zip -oC:\ -y > NULL
 
 build: false
@@ -68,8 +67,8 @@ test_script:
 
 !!! Adding badges
 
-With CI happily running, you can add a badge to your readme that will show the current status of your project.
-Here is the badge of the Containers-Stack project where we also enabled the coveralls.io test coverage service.
+With CI happily running, you can add a badge to your ==README== that will show the current status of your project.
+Here is the badge of the Containers-Stack project where we also enabled the ==coveralls.io== test coverage service.
 
 [[[
 # Containers-Stack
@@ -77,8 +76,8 @@ A dead stupid stack implementation, but one fully working :)
 
 [![Build Status](https://travis-ci.com/Ducasse/Containers-Stack.svg?branch=master)]
 (https://travis-ci.com/Ducasse/Containers-Stack)
-[![Coverage Status](https://coveralls.io/repos/github//Ducasse/Containers-Stack/badge.svg?branch=master)]
-(https://coveralls.io/github//Ducasse/Containers-Stack?branch=master)
+[![Coverage Status](https://coveralls.io/repos/Github//Ducasse/Containers-Stack/badge.svg?branch=master)]
+(https://coveralls.io/Github//Ducasse/Containers-Stack?branch=master)
 [![License](https://img.shields.io/badge/license-MIT-blue.svg)]()
 [![Pharo version](https://img.shields.io/badge/Pharo-7.0-%23aac9ff.svg)]
 (https://pharo.org/download)
@@ -91,7 +90,7 @@ The following script installs Containers-Stack in Pharo.
 ```smalltalk
 Metacello new
   baseline: 'ContainersStack';
-  repository: 'github://Ducasse/Containers-Stack/src';
+  repository: 'Github://Ducasse/Containers-Stack/src';
   load.
 ```
 ]]]
@@ -100,7 +99,5 @@ Metacello new
 To obtain the necessary link, click on the badge in your Travis project overview and select one of the options. You can insert the markdown code directly into your README.md.
 
 !!! Conclusion
-With such setup you make sure that you can run your software on different platforms. 
-In addition you make sure that you will be able to smoothly load your code. 
-Other services such as coveralls are available for Pharo. 
-
+With a continuous integration setup, you make sure that you can run your software on different platforms.
+In addition you make sure that you will be able to smoothly load your code and that any addition or modifications you just did is not disrupting the whole project. Other services such as coveralls are available for Pharo.
