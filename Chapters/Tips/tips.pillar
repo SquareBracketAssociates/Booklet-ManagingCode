@@ -60,38 +60,17 @@ Imagine that you are in branch ==odd== and you code
 ==m1==, ==m2==, ==m3==, ==m4==. 
 Then later you realize too late that it would be great to extract ==m2== and ==m4== in another branch because you would like to merge it in another branch called ==even==.
 
-In addition you do not want to have ==even== be a child of your ==odd== to avoid dependency.
-
-[[[
-even
-	|
-	V
-odd
-	|
-	V
-master
-]]]
-
-but
-[[[
- odd  even
-	| 	 |
-	V		 V
-	master
-]]]
-
-
 To commit changes into different branches, you must change your branch. Because a ''commit'' always modifies the current branch.
 
 When you change  a branch, there is first a preview. In the preview, you  have a diff and  you have a
-combo-box to select a checkout strategy.
+combo-box to select a checkout strategy:
 
 +Checkout choices.>file://figures/CheckoutChoices.png|width=75|label=CheckoutChoices+
 
-The default one is to reload the packages, this will override any local changes you had.
-The last one is to not load any packages: in other words, change the branch but do not touch my image.
+- The default checkout strategy is to reload the packages, this will override any local changes you had.
+- The last one is to not load any packages: in other words, change the branch but do not touch my image.
 
-So one way to do what you want is
+So one way to do save your changes in separate branch is to:
 # Commit in branch odd by selecting a subset of changes
 # Change to branch even using the "Do not checkout" strategy
 # Commit in branch even a subset of changes
