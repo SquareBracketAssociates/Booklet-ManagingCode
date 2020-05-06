@@ -138,7 +138,7 @@ Your local repository is ready, let's move on to the next part.
 
 !!! Add and commit your package using the ''Working copy'' browser
 Once your project contains Iceberg metadata, Iceberg will be able to manage it easily.
-Double click on your project to bring a 'Working copy'' browser for your project. It lists all the packages that compose your project. Right now you have none.
+Double click on your project to bring a ''Working copy'' browser for your project. It lists all the packages that compose your project. Right now you have none.
 Add a package by pressing the \+ (Add Package) iconic button as shown by Figure *@WithAPackage*.
 
 +Adding a package to your project using the ''Working copy'' browser.>file://figures/S10-AddingAPackage.png|width=75|label=WithAPackage+
@@ -155,7 +155,7 @@ You can commit several times if needed.
 
 +When you commit changes, Iceberg shows you the code about to be committed and you can chose the code entities that will effectively be saved.>file://figures/S11-DirtyCommit.png|width=50|label=DirtyCleaned+
 
-+Once committed Iceberg reflects that your project is in sync with the code in your local repository.>file://figures/S11-DirtyBecomeClean.png|width=50|label=DirtyBecomeClean+
++Once changes committed, Iceberg reflects that your project is in sync with the code in your local repository.>file://figures/S11-DirtyBecomeClean.png|width=50|label=DirtyBecomeClean+
 
 !!!! Publish your changes to your remote
 Now you are nearly done. Publish your changes from your local directory to your remote repository using the Push button. You may be prompted for credentials if you used HTTPS.
