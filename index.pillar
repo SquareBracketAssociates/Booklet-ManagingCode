@@ -1,5 +1,5 @@
 
-!! Preambule
+!! Preamble
 Iceberg is a tool to manage git projects from Pharo. 
 It makes the experience of managing code really smooth.
 Iceberg evolved over the years.
@@ -9,8 +9,8 @@ We are using the version of Iceberg available in Pharo 8.0.
 
 This document is under writing but we decided to release before its completion 
 because managing code can be a large topic when we start to discuss workflow and process. 
-The authors want to thank Sean de Nigris, Quentin Ducasse and Stefan Eggermont for the reviews and copy-edit of the early version.
 
+The authors want to thank Sean de Nigris, Quentin Ducasse and Stefan Eggermont for the reviews and copy-edit of the early version. We also thank Peter Uhnak for his first blog on publishing Pharo code on Github.
 
 ${inputFile:path=Chapters/Started/started.pillar}$
 ${inputFile:path=Chapters/Started/extensions.pillar}$

@@ -123,7 +123,7 @@ In general you edit your working copy located on your hard-drive and you commit 
 When coding in Pharo, you should understand that you are not directly editing your local working copy, you are modifying objects that represent classes and methods that are living in the Pharo environment.
 Therefore it is like you have a double working copy: Pharo itself and the ==git== working copy.
 
-When you use ==git== command lines,  you have to understand that there is the code in the image and the code in the working copy (and your local clone). In order to update your image, you ''first'' have to update your ==git== working copy and ''then'' load code from the working copy to the image. To save your code you have to save the code to files, add them to your git working copy and commit them to your clone.
+When you use ==git== command lines,  you have to understand that there is the code in the image and the code in the working copy (and your local clone).To update your image, you ''first'' have to update your ==git== working copy and ''then'' load code from the working copy to the image. To save your code you have to save the code to files, add them to your git working copy and commit them to your clone.
 
 Now the interesting part is that Iceberg manages all this for you transparently.
 All the synchronization between these two working copies is done behind the scene.
@@ -136,7 +136,7 @@ Figure *@architecture* shows the architecture of the system.
 - Iceberg manages the publication of your code to remote repositories.
 - Iceberg manages the re-synchronization of your image with the ==git== local repository, ==git== remote repositories and the ==git== working copy.
 
-+@@TO BE REDONE Architecture.>file://figures/architecture.png|width=75|label=architecture+
++Architecture.>file://figures/architecture.png|width=75|label=architecture+
 
 
 !!! Conclusion

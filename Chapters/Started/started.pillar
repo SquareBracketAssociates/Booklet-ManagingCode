@@ -4,53 +4,27 @@ In this chapter we explain how you can publish your project on Github using Iceb
 We do not explain basic concepts like commit, push/pull, merging, or cloning.
 
 A strong precondition before reading this chapter is that you must be able to publish from the command line
-to the ==git== hosting service that you want to use. If you cannot do not expect Iceberg to fix it magically for you. Now if you have some problems with SSH configuration you can either use HTTPS or
-have a look in Chapter *@cha:tips* the section explaining how to generate SSH keys.
-We thank Peter Uhnak for his first blog on publishing Pharo code on Github.
-Let us get started.
+to the ==git== hosting service that you want to use. If you cannot do not expect Iceberg to fix it magically for you. Now if you have some problems with SSH configuration (which is the default with Github) you can either use HTTPS or have a look in Chapter *@cha:tips* the section explaining how to generate SSH keys. Let us get started.
 
 !!! For the impatient
-
 If you do not want to read everything, here is the executive summary.
 
 - Create a project on Github or any git-based platform.
 - [Optional] Configure Iceberg to use custom ssh keys.
 - Add a project in Iceberg.
--- Optionally, in the cloned repository, create a directory named ==src== on your file system. This is a good convention.
-- In Iceberg, open your project and add your packages (It is always good to add a baseline).
+-- Optionally but strongly recommanded, in the cloned repository, create a directory named ==src== on your file system. This is a good convention.
+- In Iceberg, open your project and add your packages.
 - Commit your project.
+- [Optional] Add a baseline to ease loading your project. 
 - Push your change to your remote repository.
 
 You are done. Now we can explain calmly.
 
+!!! Basic Architecture
 
-!!! Architecture
+As ==git== is a distributed versioning system, you need a ''local'' clone of the repository and a working copy. Your working copy and local repostory are usually on your machine. This is to this local repository that your changes will be commited to before being pushed to remote repositories (Figure *@commit_in_workflow*). We will see in the next Chapter that the situation is a bit more complex and that Iceberg is hiding the extra complexity for us. 
 
-As ==git== is a distributed versioning system, you need a ''local'' clone of the repository. It is usually on your machine. This is to this local repository that your changes will be commited to before being pushed to remote repositories.
-In general you commit to your local clone, and from there you push to remote repositories like  Github or Gitlab, or that of your company.
-Iceberg will do all the operations and more for you.
-
-
-!!! SSH setup: Tell Iceberg to use your keys
-To be able to commit to your ==git== project, you should either use HTTPS or you will need to set up valid credentials in your system. In case you use SSH (the default way), you will need to make sure those keys are available to your Github account and also that the shell adds them for smoother communication with the server.
-See the Chapter *@cha:tips* Tips and Tricks for some help with setting up your ssh keys.
-
-
-Go to settings browser, search for "Use custom SSH keys" and enter your data there as shown in Figure *@UseCustom*).
-
-+Use Custom SSH keys settings.>file://figures/useCustom.png|width=75|label=UseCustom+
-
-Alternatively, you can execute the following expressions in your image playground or add them to your Pharo system preference file (See Menu System item startup):
-
-[[[
-IceCredentialsProvider useCustomSsh: true.
-IceCredentialsProvider sshCredentials
-  publicKey: 'path\to\ssh\id_rsa.pub';
-  privateKey: 'path\to\ssh\id_rsa'
-]]]
-
-@@note ""Pro Tip:"" this can be used too in case you have a non-default key file. You just need to replace ==id_rsa== with your file name.
-
++A distributed versioning system.>file://figures/commit_in_workflow.png|width=75|label=commit_in_workflow+
 
 !!! Create a new project on Github
 While you can save locally first and then later create a remote repository we first create a new project on Github. Figure *@onGithub* shows the creation of a project on Github.
@@ -94,6 +68,29 @@ Later on, when you will have commited changes to your project and you want to lo
 when you will clone again, you will see that Iceberg will just report that the project is not loaded as shown in Figure *@ProjectWithCommits*.
 
 +Adding a project with some contents shows  that the project is not loaded - not that it is not found.>file://figures/S7-ProjectNotLoaded.png|width=75|label=ProjectWithCommits+
+
+
+!!! SSH setup: Tell Iceberg to use your keys
+To be able to commit to your ==git== project, you should either use HTTPS or you will need to set up valid credentials in your system. In case you use SSH (the default way), you will need to make sure those keys are available to your Github account and also that the shell adds them for smoother communication with the server.
+See the Chapter *@cha:tips* Tips and Tricks for some help with setting up your ssh keys.
+
+
+Go to settings browser, search for "Use custom SSH keys" and enter your data there as shown in Figure *@UseCustom*).
+
++Use Custom SSH keys settings.>file://figures/useCustom.png|width=75|label=UseCustom+
+
+Alternatively, you can execute the following expressions in your image playground or add them to your Pharo system preference file (See Menu System item startup):
+
+[[[
+IceCredentialsProvider useCustomSsh: true.
+IceCredentialsProvider sshCredentials
+  publicKey: 'path\to\ssh\id_rsa.pub';
+  privateKey: 'path\to\ssh\id_rsa'
+]]]
+
+@@note ""Pro Tip:"" this can be used too in case you have a non-default key file. You just need to replace ==id_rsa== with your file name.
+
+
 
 !!! Repair to the rescue
 
