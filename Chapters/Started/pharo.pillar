@@ -1,9 +1,17 @@
-!! Update your Pharo fork with the official repository
+!! [Draft] Contributing to Pharo
 
 Pharo itself is hosted on GitHub under *http://www.github.com/pharo-project/*.
-You can contribute to Pharo by fixing some issues.
+You can contribute to Pharo itself fixing some issues.
 The official and unique way of submitting code is by doing a ''Pull Request'' from your fork to the official repository.
-You can see the issues on the Pharo Github repository: *http://www.github.com/pharo-project/pharo/issues*. To be able to do this, you need a ''fork'' of the Pharo repository.
+You can see the issues on the Pharo Github repository: *http://www.github.com/pharo-project/pharo/issues*. 
+
+Should be based on: 
+	https://github.com/pharo-project/pharo/wiki/Contribute-a-fix-to-Pharo
+	
+	
+!!! Basic architecture
+
+To be able to do this, you need a ''fork'' of the Pharo repository
 
 In general when developing to produce a change for Pharo, you do not need to update your fork often. Iceberg will do it for you.
 But sometimes, you would like to update your fork with the official Pharo repository and you can do this very easy using Iceberg or using the command line.
@@ -13,7 +21,7 @@ If you want to update all your repository, just repeat this procedure to all the
 !!! Update your Pharo ''fork'' using Iceberg in 3 steps
 
 This procedure has 3 steps:
-# Create a new image and synchronize your remote repository.
+# Download a new image and synchronize your remote repository.
 # Synchronize your local repository with the official Pharo repository.
 # Push the updated data to your remote repository.
 
@@ -21,7 +29,7 @@ This procedure has 3 steps:
 
 Create a new Pharo Image and open Iceberg.
 The status of Pharo repository should be ==Local repository missing==.
-In order to repair it, go to ""Repair repository"" and choose ""Clone again this repository"".
+To repair it, go to ""Repair repository"" and choose ""Clone again this repository"".
 Enter the information of your fork (your Github username/pharo) and select HTTPS, as shown in Figures *@RepairRepository*, *@CloneAgain* and *@CloneGithub*.
 
 +Repair Repository.>file://figures/PharoFork_RepairRepository.png|width=75|label=RepairRepository+
