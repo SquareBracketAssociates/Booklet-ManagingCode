@@ -39,8 +39,8 @@ ${inputFile:path=Chapters/Started/started.pillar}$
 ${inputFile:path=Chapters/Started/extensions.pillar}$
 ${inputFile:path=Chapters/Started/services.pillar}$
 ${inputFile:path=Chapters/Started/pharo.pillar}$
-${inputFile:path=Chapters/Started/glossary.pillar}$
 ${inputFile:path=Chapters/Tips/tips.pillar}$
+${inputFile:path=Chapters/Started/glossary.pillar}$
 
 
 
