@@ -5,9 +5,6 @@ this code repository.
 You can contribute to Pharo itself fixing some issues.
 The official and unique way of submitting code is by doing a ''Pull Request'' from your fork to the official repository.
 You can see the issues on the Pharo Github repository: *http://www.github.com/pharo-project/pharo/issues*. 
-
-Should be based on: 
-	https://github.com/pharo-project/pharo/wiki/Contribute-a-fix-to-Pharo
 	
 !!! In a nutshell
 

@@ -1,4 +1,4 @@
-!! Publishing your first Pharo project
+!! Publishing your first Pharo project with Iceberg
 
 In this chapter we explain how you can publish your project on Github using Iceberg.
 We do not explain basic concepts like commit, push/pull, merging, or cloning.
