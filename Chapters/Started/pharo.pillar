@@ -1,6 +1,7 @@
-!! [Draft] Contributing to Pharo
+!! Contributing to Pharo
 
-Pharo itself is hosted on GitHub under *http://www.github.com/pharo-project/*.
+Pharo itself is hosted on GitHub under *http://www.github.com/pharo-project/*. All the development of the core system is done via 
+this code repository. 
 You can contribute to Pharo itself fixing some issues.
 The official and unique way of submitting code is by doing a ''Pull Request'' from your fork to the official repository.
 You can see the issues on the Pharo Github repository: *http://www.github.com/pharo-project/pharo/issues*. 
@@ -8,91 +9,102 @@ You can see the issues on the Pharo Github repository: *http://www.github.com/ph
 Should be based on: 
 	https://github.com/pharo-project/pharo/wiki/Contribute-a-fix-to-Pharo
 	
+!!! In a nutshell
+
+The general process is summarised by the following steps:
+
+# Download the latest version (this is important since I will make sure that you do not have to resync your fork).
+# Use repair (it will fetch some commits and make sure that your local repository is in sync the remotes).
+# Use repair (and create a branch let us called Bottom-123 that will point to the commits of your image).
+# Create a new branch for the issue you want to work on.
+# Code, then commit, then push to YOUR fork
+# Issue a PullRequest from your fork to Pharo
+# Check out your Bottom-123 branch and you can restart step 5
+
+
+!!! Step 0: Setting up the development environment
+
+Download and launch latest Pharo version:
+
+The recommended way to download Pharo is to use the Pharo launcher, which you can get from Pharo download's page. Otherwise, if you have a nice command line environment (wget, readline, bash), download latest development pharo using zeroconf.
+
+@@note Pro tip: If you're on windows and you want a nice command line environment, install msys
+
+[[[
+wget -O- get.pharo.org/64/90+vm | bash
+./pharo-ui Pharo.image
+]]]
+
+If you don't have a command line environment, you can download both image and vm manually from the following links for windows for example:
+
+* Image: http://files.pharo.org/get-files/90/pharo.zip
+* VM: http://files.pharo.org/get-files/90/pharo-win-stable.zip
+Or you can browse the file server and find the files suiting your environment.
+
+!!! Fork the Pharo repository
+
+All changes you'll do will be versionned in ''your own'' fork of the Pharo repository. Then, from your fork you'll be able to issue pull requests to Pharo, where they will be reviewed, and luckily, integrated.
+
+Go to Pharo github's repository and click on the fork button on the top right. Yes, this means that you'll need a github account to contribute to Pharo, yes.
+
+!!! Setup Iceberg
+
+To be able to contribute to Pharo, you need a Pharo git repository.
+
+
+
+You will need to set a valid set of credentials in your system to be able to work with Pharo. In case you use SSH (the default way), you will need to make sure those keys are available but you can start by using HTTPS since this is easier.
+ In case they are not (and you will notice as soon as you try to clone a project or commit a change into one), you can add them following this steps:
+
+!!!! Linux setting credentials
+Execute in your shell:
+[[[
+    ssh-add ~/.ssh/id_rsa
+]]]
+
+!!!! OSX setting credentials
+Execute in your shell:
+[[[
+    ssh-add -K ~/.ssh/id_rsa
+]]]
+
+Both for OSX and linux you can add such lines in your ==.bash_profile== (or the one corresponding to your shell installation) so they are automatically executed on each new shell session.
+
+!!!! Windows setting credentials
+in windows is more complicated, you may need to generate a pair of keys (that needs to be uploaded to your account on github).
+You can follow instructions on how to generate your keys *http://guides.beanstalkapp.com/version-control/git-on-windows.html#installing-ssh-keys*.
+
+
+!!!! Pharo side settings
+
+Then you need to go to settings browser, search for "Use custom SSH keys" and complete your data there.
+
+Alternatively, you can execute in your image playground:
+[[[
+IceCredentialsProvider useCustomSsh: true.
+IceCredentialsProvider sshCredentials
+	publicKey: 'path\to\ssh\id_rsa.pub';
+	privateKey: 'path\to\ssh\id_rsa'
+]]]
 	
-!!! Basic architecture
+@@note Pro Tip: this can be used too in case you have a non default key file, you just need to replace "id_rsa" with your file name.
 
-To be able to do this, you need a ''fork'' of the Pharo repository
 
-In general when developing to produce a change for Pharo, you do not need to update your fork often. Iceberg will do it for you.
-But sometimes, you would like to update your fork with the official Pharo repository and you can do this very easy using Iceberg or using the command line.
-This chapter you will learn how to update a ''branch'' in your repository.
-If you want to update all your repository, just repeat this procedure to all the branches.
+!!! Step 1. Setting up your repository
 
-!!! Update your Pharo ''fork'' using Iceberg in 3 steps
+A fresh Pharo image comes with a pre-configured Pharo repository. 
+This repository will be in state "Local Repository Missing". 
+This means that the image does not find a pharo clone in your disk. 
 
-This procedure has 3 steps:
-# Download a new image and synchronize your remote repository.
-# Synchronize your local repository with the official Pharo repository.
-# Push the updated data to your remote repository.
++A fresh Pharo image by default indicates that it does not find the clone of Pharo. >file://figures/Contribute1-repository-missing.png|width=65|label=repositoryMissing+
 
-!!!! Step 1 – Create a new image and synchronize your remote repository
 
-Create a new Pharo Image and open Iceberg.
-The status of Pharo repository should be ==Local repository missing==.
-To repair it, go to ""Repair repository"" and choose ""Clone again this repository"".
-Enter the information of your fork (your Github username/pharo) and select HTTPS, as shown in Figures *@RepairRepository*, *@CloneAgain* and *@CloneGithub*.
+!!!! Repairing local repository missing
 
-+Repair Repository.>file://figures/PharoFork_RepairRepository.png|width=75|label=RepairRepository+
-+Clone Again.>file://figures/PharoFork_CloneAgain.png|width=75|label=CloneAgain+
-+Clone Github.>file://figures/PharoFork_CloneGithub.png|width=75|label=CloneGithub+
+To solve this situation, you need to rebind your repository with a clone in disk. 
+You will be proposed with the repair menu item/button. 
 
-If the error in Figure *@Error* happens, just ignore it, ""close all"" windows and open Iceberg again.
-
-+Error: close all windows and reopen Iceberg.>file://figures/PharoFork_Error.png|width=75|label=Error+
-
-The status of your image can be ""Uncommitted changes"" or ""Fetch required"". Follow the option a or b:
-
-- a) In the first case, if the status of your image goes to ""Uncommitted changes"", as shown in Figure *@FetchUncommited*, you need to do a ""Fetch"" to download your repository data and synchronize it with your local image and go to ""Step 2"".
-
-+Fetch Uncommitted.>file://figures/PharoFork_FetchUncommited.png|width=75|label=FetchUncommited+
-
-- b) In this second case, ""Fetch required"", as shown in Figure *@FetchRequired*, do a ""Fetch"" in the repository and follow the next steps.
-
-+Fetch Required.>file://figures/PharoFork_FetchRequired.png|width=75|label=FetchRequired+
-
-The new status of your image is ""Detached Working Copy"" as shown in Figure *@Detached*.
-To fix it, use ""Repair repository"", select ""Discard image changes"", select this option to do checkout ""DO NOT CHECKOUT any packages"" and press ""Checkout"" button, as shown in Figures *@DiscardImage* and *@DoNotCheckout*.
-
-+Detached.>file://figures/PharoFork_Detached.png|width=75|label=Detached+
-+Discard Image.>file://figures/PharoFork_DiscardImage.png|width=75|label=DiscardImage+
-+Do Not Checkout.>file://figures/PharoFork_DoNotCheckout.png|width=75|label=DoNotCheckout+
-
-!!!! Step 2 – Synchronize your local repository with official Pharo repository
-
-Now you need to create a ""New branch"", because we need to delete our local branch to load it from the official repository, as shown in Figure *@CheckoutBranch* and *@NewBranchTemporary*.
-
-+Checkout Branch.>file://figures/PharoFork_CheckoutBranch.png|width=75|label=CheckoutBranch+
-+New Branch Temporary.>file://figures/PharoFork_NewBranchTemporary.png|width=75|label=NewBranchTemporary+
-
-Now we are going to delete the local branch. Select ""Repository"", select in local ""Branches"" the branch that you want to update and then delete it. In this case ""Pharo8.0"", as shown in Figure *@SelectRepository* and *@DeleteBranch*.
-
-+Select Repository.>file://figures/PharoFork_SelectRepository.png|width=75|label=SelectRepository+
-+Delete Branch.>file://figures/PharoFork_DeleteBranch.png|width=75|label=DeleteBranch+
-
-Now you can do ""Checkout branch"" in the remote branch. Go to ""Remotes/pharo-project"" and select ""Checkout branch"" in ""Pharo8.0"" as shown in Figure *@CheckoutRemoteBranch*.
-
-+Checkout Remote Branch.>file://figures/PharoFork_CheckoutRemoteBranch.png|width=75|label=CheckoutRemoteBranch+
-
-Be sure you have selected this option to do checkout ""DO NOT CHECKOUT any packages"" as Figure *@DoNotCheckoutRemote*. This means we are going to update only the local repository, without applying the new changes in the current image.
-
-+Do Not Checkout Remote.>file://figures/PharoFork_DoNotCheckoutRemote.png|width=75|label=DoNotCheckoutRemote+
-
-!!!! Step 3 – Push the updated data to your remote repository
-
-Select ""Push"" as Figure *@Push*.
-
-+Push.>file://figures/PharoFork_Push.png|width=75|label=Push+
-
-Double check that you are selecting your repository in order to push in it.
-Enter your Github login and now you have your Github repository updated with the official Github Pharo Project Repository, as Figure *@PushYourRemote*.
-
-+Push Your Remote.>file://figures/PharoFork_PushYourRemote.png|width=75|label=PushYourRemote+
-
-The status of the repository in Iceberg is ""Uncommitted changes"", but you don't need to commit it.
-Your Github repository already is updated as shown in Figures *@FinalIcebergStatus* and *@FinalGithubStatus*.
-
-+Final Iceberg Status.>file://figures/PharoFork_FinalIcebergStatus.png|width=75|label=FinalIcebergStatus+
-+Final Github Status.>file://figures/PharoFork_FinalGithubStatus.png|width=75|label=FinalGithubStatus+
++A Repository Page for a project called ""test"" in GitHub.>file://figures/Contribute2-repositoryRepair.png|width=65|label=repositoryRepair+
 
 !!! Update your Pharo fork using the command line
 
