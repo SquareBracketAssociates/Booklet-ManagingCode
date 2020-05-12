@@ -109,8 +109,8 @@ However, we are not always in the mood of using the terminal, or of wanting to d
 There are tools that are more suitable to explore the history of a project, usually providing some nice graphical capabilities.
 This is the case of tools such as SourceTree (Figure *@commit_graph_sourcetree*) or Github's network view (Figure *@commit_graph_github_network*).
 
-+Example of SourceTree's commit graph view>figures/sourcetree_tree.png|label=commit_graph_sourcetree+
-+Example of Github's commit graph view>figures/github_network_tree.png|label=commit_graph_github_network+
++Example of SourceTree's commit graph view.>file://figures/sourcetree_tree.png|label=commit_graph_sourcetree+
++Example of Github's commit graph view.>file://figures/github_network_tree.png|label=commit_graph_github_network+
 
 !!! Discarding your Local Committed Changes
 

@@ -13,7 +13,7 @@ Don't be affraid if you've never used it before, it is not as difficult as it ma
 There is always a first time!
 Also, we promise you that everything you learn in here can be applied to, and will actually help you better understand, non command-line tools.
 
-+A Repository as a timeline of changes>figures/history-versions.pdf|width=55|label=history_versions+
++A Repository as a timeline of changes.>file://figures/history-versions.pdf|width=55|label=history_versions+
 
 !!! Creating a Repository
 
@@ -32,13 +32,13 @@ Let's proceed to create a repository in an online hosting service such as GitHub
 On GitHub use the ''New Repository'' action. Figure *@new_repo_github* shows the kind of form GitHub 
 provides to its users to create a new repository.
 
-+Creating a New Repository on Github>figures/new-repository-github.png|width=65|label=new_repo_github+
++Creating a New Repository on Github.>file://figures/new-repository-github.png|width=65|label=new_repo_github+
 
 Following the form/wizard will eventually get you a running repository on-line.
 You will be most probably then redirected to your repository page.
 Figure *@repository_page* shows how such a page looks in GitHub.
 
-+A Repository Page for a project called ""test"" in GitHub>figures/GitHub_repository_page.png|width=65|label=repository_page+
++A Repository Page for a project called ""test"" in GitHub.>file://figures/GitHub_repository_page.png|width=65|label=repository_page+
 
 We are almost set to work from the command line now.
 However, we need to set-up our mind around a couple of extra concepts.
@@ -56,7 +56,7 @@ For now, you will have to remember only one thing: instead of being connected al
 Eventually, we will synchronize the state between our ""local"" repository with the ""remote"" one (Figure *@commit_in_workflow-basic*).
 This is what makes possible the disconnected or off-line workflow that people often praise in ==git==.
 
-+Basic git architecture: You change the files in your working copy, commit changes to local repository and synchronize your local repository with remote ones.>figures/commit_in_workflow2.pdf|width=90|label=commit_in_workflow-basic+
++Basic git architecture: You change the files in your working copy, commit changes to local repository and synchronize your local repository with remote ones.>file://figures/commit_in_workflow2.pdf|width=90|label=commit_in_workflow-basic+
 
 
 Making a local copy of a remote repository is such a common task that ==git== has a dedicated command for it, the ==git clone [url]== command.
@@ -67,7 +67,7 @@ We will use in this chapter HTTPS URLs because they have an easier setup, but fo
 To obtain the HTTPS URL of your repository, go to your repository's page and look for it under the clone/HTTPS options.
 As an example, Figure *@HTTPS_GitHub* illustrates how to get such url from a GitHub project page.
 
-+Getting the HTTPS url of your repository from GitHub>figures/HTTPS_url_GitHub.png|width=90|label=HTTPS_GitHub+
++Getting the HTTPS url of your repository from GitHub.>file://figures/HTTPS_url_GitHub.png|width=90|label=HTTPS_GitHub+
 
 Copy that url and use type your command as in:
 
@@ -318,7 +318,7 @@ While your changes are in your machine, nobody else can contribute or collaborat
 Moreover, losing your machine would mean losing all your changes too.
 Keeping your changes safe means to synchronize them from time to time with your remote repository.
 
-	==git=='s metaphore for remote synchronization is based on the ideas of ''pulling'' and ''pushing'' changes between repositories.
+ ==git=='s metaphore for remote synchronization is based on the ideas of ''pulling'' and ''pushing'' changes between repositories.
  ==git== takes the perspective that we are located in our local repository.
 We bring other's changes by ''pulling'' them from remote repositories to our local repository.
 We send our changes by ''pushing'' them from our local repositories to one or many remote repositories.
@@ -389,7 +389,7 @@ To git@github.com:[your_username]/[your_repo_name].git
    b6dcc3f..f269295  master -> temp
 ]]]
 
-+Push is an operation that sends commits from your local repository to a remote repository.>figures/push_in_workflow.pdf|width=90|label=push_in_workflow+
++Push is an operation that sends commits from your local repository to a remote repository.>file://figures/push_in_workflow.pdf|width=90|label=push_in_workflow+
 
 !!!! A Branch's Upstream
 
@@ -456,7 +456,7 @@ We have seen that a new repository starts in your local machine with a ==git clo
 Changes in our working copy are tracked by ==git== automatically and we can query the tracking using ==git status==.
 We can then proceed to operate on our changes as illustrated in *@simple_overview*.
 
-+Overview of ==git== basic operations: ==add==, ==commit==, ==pull== and ==push== (\+ extra ==fetch== and ==merge==).>figures/simple_overview.pdf|width=90|label=simple_overview+
++Overview of ==git== basic operations: ==add==, ==commit==, ==pull== and ==push== (\+ extra ==fetch== and ==merge==).>file://figures/simple_overview.pdf|width=90|label=simple_overview+
 
 We have seen that:
 

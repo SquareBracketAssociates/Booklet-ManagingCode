@@ -12,7 +12,7 @@ If you already know what is a ==git== commit, a ==git== reference and how the gr
 Before starting explaining what is a commit, what is a branch, and so on, let's start easy by understanding the parts that compose our ==git== repository.
 When you create a ==git== repository as we did in the last section, or you clone an old repository that already has some files in it, you will find that there is more than meets the eye. A ==git== repository has usually three core collaborating components: the ""working copy"", the ""repository"", and the ""remote"" repositories. You can see an schematics on Figure *@repository_structure*.
 
-+==git== repository structure:  the working copy, the repository, and the remote repositories.>figures/repository-structure.pdf|width=90|label=repository_structure+
++==git== repository structure:  the working copy, the repository, and the remote repositories.>file://figures/repository-structure.pdf|width=90|label=repository_structure+
 
 What you usually see in your disk when you clone is not actually the ==git== repository but the ""working copy"".
 The working copy is the directory where your files are, where you work and apply modifications.
@@ -61,7 +61,7 @@ In other words, when we create a new commit, the parent of our new commit is the
 A commit is said to be an ancestor of another commit if it preceeds it in history.
 Moreover, a commit can have one or many parents, and many commits can have the same commit as parent.
 
-+Graph of commits>figures/commit-graph.pdf|width=65|label=commit_graph+
++Graph of commits.>file://figures/commit-graph.pdf|width=65|label=commit_graph+
 
 For instance, take a look at the schema of a typical commit graph represented in Figure *@commit_graph*.
 - Commit ==a4153b1== is the first commit in the graph, with no parents. A commit with no parents represents the first commit in a repository, when no previous history was available.
@@ -83,7 +83,7 @@ To solve this, ==git== provides a second kind of objects: ==git== ""references""
 A ==git== reference is like a label that you put on a commit, to be able to identify that commit by a much simpler name afterwards.
 For example, you can name a commit as ""release 1.0"" or you can name it as ""current development commit"".
 
-+==git== references: a reference refers to a commit. HEAD to a branch and tags are special fixed references.>figures/references.pdf|width=70|label=references+
++==git== references: a reference refers to a commit. HEAD to a branch and tags are special fixed references.>file://figures/references.pdf|width=70|label=references+
 
 As we show in Figure *@references*, there are two main kinds of references in Git:
 - ""tags"": tags are fixed labels that once created are not meant to be removed or moved. They are useful for doing releases: people will expect that a release does not change, otherwise they cannot depend on it.
@@ -149,7 +149,7 @@ When checking out a tag, ==git== tells you that we are in ''detached HEAD'' stat
 And that whatever commit we do in this state will be lost unless we create a branch.
 What happened here is that the ==checkout== command modified the ""HEAD"" reference to point to the ''commit pointed by the tag, instead of a branch''. Figure *@detached-head* shows the commit graph for this particular case.
 
-+Detached HEAD after checking out a tag: HEAD refers to a commit and not a branch anymore>figures/dettached_head.pdf|width=65|label=detached-head+
++Detached HEAD after checking out a tag: HEAD refers to a commit and not a branch anymore.>file://figures/dettached_head.pdf|width=65|label=detached-head+
 
 
 When you are in a detached HEAD, if you want to save your modification, you should check out an existing branch
@@ -169,7 +169,7 @@ The concept behind merging is not difficult.
 Using the same idea of graph of commits that we used before, a merge can be represented as a commit that has several parents, thus joining several histories.
 Figure *@merge* illustrates such a merge commit.
 
-+Merging the history with a merge commit>figures/merge.pdf|width=65|label=merge+
++Merging the history with a merge commit.>file://figures/merge.pdf|width=65|label=merge+
 
 However, as you see also in the picture, a merge commit will be referenced by one of the branches but not both.
 In other words, ''a merge operation means that a first branch will be merged into a second one''.
@@ -282,14 +282,14 @@ $ git commit -m "Resolve conflict"
 
 Commiting means that we are going to move some content from our working copy to our local repository, as it is shown in Figure *@commit_in_workflow*.
 
-+Commit is an operation that stores things from your working copy into your local repository>figures/commit_in_workflow.pdf|width=90|label=commit_in_workflow+
++Commit is an operation that stores things from your working copy into your local repository.>file://figures/commit_in_workflow.pdf|width=90|label=commit_in_workflow+
 
 
 What the commit command is doing behind is to create a new node in our history graph.
 Moreover, it will update the master branch label to point to this new commit.
 The commit graph in this case will look as in Figure *@commit_graph_1*.
 
-+History graph after our first commit>figures/commit_graph_1.pdf|width=65|label=commit_graph_1+
++History graph after our first commit.>file://figures/commit_graph_1.pdf|width=65|label=commit_graph_1+
 
 If we repeat the process, i.e., we apply a change to one of our files, add and commit our commit graph will change again.
 A new commit with a new commit id will be created having as parent our previous commit.
@@ -313,7 +313,7 @@ Branches in ==git== represent different histories.
 As in one of science fiction time-travel theories, ==git== branching is equivalent to take one moment in time have several alternative time-lines from there.
 Figure *@Branches* illustrates the idea, showing that you can have two different futures from commit ==0c0e5ff==.
 
-+History lines can be branched from a commit>figures/branches.pdf|width=65|label=Branches+
++History lines can be branched from a commit.>file://figures/branches.pdf|width=65|label=Branches+
 
 By default, a ==git== repository will include a single branch, called ""master"". Most people only need a single branch to work. However, it may be useful to split work in several branches as we will see later.
 You can ask ==git== for the branches in the repository using the command ==git branch -v==.
@@ -336,7 +336,7 @@ Figure *@new_branch* shows what happens in the graph view.
 $ git branch development
 ]]]
 
-+A new branch points by default to the same commit as the current branch>figures/new_branch.pdf|width=65|label=new_branch+
++A new branch points by default to the same commit as the current branch.>file://figures/new_branch.pdf|width=65|label=new_branch+
 
 However, as we see in the graph view, creating a new branch does not modify ==HEAD==.
 Indeed, our current branch/commit did not move.
@@ -402,7 +402,7 @@ $ git branch -v
 This change will create two different history lines, as shown in Figure *@Branches2*.
 One history line represented by the ==master== branch, and another history line represented by the ==development== branch.
 
-+Divergent history>figures/branches.pdf|width=65|label=Branches2+
++Divergent history.>file://figures/branches.pdf|width=65|label=Branches2+
 
 
 
@@ -539,7 +539,7 @@ From git://github.com/[project_owner]/[your_repo_name]
 Indeed, fetch will bring some objects (e.g., commits) to our repository, bring new branches and so on, but it will not update any of your branches or tags.
 We can then procceed to merge our local branch with the one in the remote by doing a normal merge operation but indicating a ""remote branch"" (that is, a branch prefixed by its remote name). Of course, as any merge operation, this can incurr into a conflict, that we should fix locally before continuing.
 
-+Fetch is an operation that brings things from a remote into your local repository. Merge will join the remote history with your current history and update your working copy. Pull will do both of them.>figures/fetch_in_workflow.pdf|width=90|label=fetch_in_workflow+
++Fetch is an operation that brings things from a remote into your local repository. Merge will join the remote history with your current history and update your working copy. Pull will do both of them.>file://figures/fetch_in_workflow.pdf|width=90|label=fetch_in_workflow+
 
 [[[language=bash
 $ git merge [remote_name]/master
@@ -571,7 +571,7 @@ To git@github.com:[your_username]/[your_repo_name].git
    b6dcc3f..f269295  master -> temp
 ]]]
 
-+Push is an operation that sends commits from your local repository to a remote repository.>figures/push_in_workflow.pdf|width=90|label=push_in_workflow+
++Push is an operation that sends commits from your local repository to a remote repository.>file://figures/push_in_workflow.pdf|width=90|label=push_in_workflow+
 
 To avoid specifying the remote and destination branch on every push (which may be a bit verbose), you can avoid those parameters and rely on ==git== default values.
 By default the ==git push== operation will try to push to the ""branch's upstream"".
