@@ -132,10 +132,9 @@ Most of the times, the easier thing to do in this case is to just create a new b
 
 +Solving the detached working copy situation.>file://figures/Contribute4-DetachedWorkingCopy.png|width=65|label=detached+
 
+!!! Step 2: Work on your image and push your change
 
-!!! Step 3: Work on your image and push your change
-
-Once you have modifications in your image, it's time to push those changes to your fork and make a pull request. To do that, we enforce the following process:
+Pick up or create an issue and fix it. Once you have modifications in your image, it's time to push those changes to ''your'' fork and make a pull request from your fork to the main Pharo repository. To do that, we enforce the following process:
 
 - you create a local branch for the issue, 
 - you issue a pull request of that issue to the main pharo development branch.
@@ -146,16 +145,18 @@ Select the option ""Create pull request"" and select as target branch pharo's de
 
 And issue the pull request!
 
-@note Pro Tip: If your PR fixes the issue, you can put a keyword "fixes #IssueNumber" in the description to automatically close the issue on merge. *https://help.github.com/en/articles/closing-issues-using-keywords*
+@@note Pro Tip: If your PR fixes the issue, you can put a keyword "fixes #IssueNumber" in the description to automatically close the issue on merge. *https://help.github.com/en/articles/closing-issues-using-keywords*
 
-!!! Step 4: Follow your pull request
+!!! Step 3: Follow your pull request
 
 If you go to github, you'll see your pull request open and that some checks are running.
+Note that if your PR fails because of test failing or you want to integrate feedback provided by reviewed, it is super simple:
+just continue to commit in your branch. Your Pull Request will be updated with your new changes. 
 This is always a cool feeling, so enjoy it.
 
 +Checking your pull request.>file://figures/Contribution6-pr-checks.png|width=65|label=PRCheck+
 
-!!! Step 5: Once your pull request is integrated
+!!! Step 4: Once your pull request is integrated
 
 Some cleanups are required:
 - remove your branch from your fork
