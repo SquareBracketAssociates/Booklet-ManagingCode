@@ -37,8 +37,8 @@ wget -O- get.pharo.org/64/90+vm | bash
 
 If you don't have a command line environment, you can download both image and vm manually from the following links for windows for example:
 
-* Image: http://files.pharo.org/get-files/90/pharo.zip
-* VM: http://files.pharo.org/get-files/90/pharo-win-stable.zip
+- Image: http://files.pharo.org/get-files/90/pharo.zip
+- VM: http://files.pharo.org/get-files/90/pharo-win-stable.zip
 Or you can browse the file server and find the files suiting your environment.
 
 !!! Fork the Pharo repository
@@ -91,20 +91,86 @@ IceCredentialsProvider sshCredentials
 
 
 !!! Step 1. Setting up your repository
-
 A fresh Pharo image comes with a pre-configured Pharo repository. 
-This repository will be in state "Local Repository Missing". 
-This means that the image does not find a pharo clone in your disk. 
+Now this repository is in state "Local Repository Missing". 
+You can develop with the image without problem now if you want to send some enhancements to Pharo 
+you will not be able to do it.
+Indeed the message ""Local Repository Missing"" means that the image does not find a Pharo clone in your disk. 
 
-+A fresh Pharo image by default indicates that it does not find the clone of Pharo. >file://figures/Contribute1-repository-missing.png|width=65|label=repositoryMissing+
++A fresh Pharo image by default indicates that it does not find the clone of Pharo.>file://figures/Contribute1-repository-missing.png|width=65|label=repositoryMissing+
 
 
-!!!! Repairing local repository missing
+!!!! Repairing local repository missing.
+To solve this situation, you need to rebind your repository with a clone on your disk. 
+Indeed even if you can browse the system class code, the image does not know where its repository is. 
+The repair menu item/button will propose you some solutions.
 
-To solve this situation, you need to rebind your repository with a clone in disk. 
-You will be proposed with the repair menu item/button. 
++Repairing the Pharo project.>file://figures/Contribute2-repositoryRepair.png|width=65|label=repositoryRepair+
 
-+A Repository Page for a project called ""test"" in GitHub.>file://figures/Contribute2-repositoryRepair.png|width=65|label=repositoryRepair+
+And clicking on the ""Repair repository"" menu will show you the repair view, showing an explanation of the current situation and some proposed solutions:
+
+- Locate this repository in your file system: if you have already cloned your pharo fork repository on your disk you can simply point to it. Pharo will synchronise it as explained in the next steps. 
+- Clone again this repository: you can clone again your Pharo fork from github to your local disc. Again your fork may be desynchronised from the actual Pharo version but Iceberg will manage it too. 
+
+So depending on the action you chose: you can then choose to search in your disk for an existing clone or to clone your forked Pharo repository.
+
+!!!! Solving fetch required. 
+Once the repository is associated with its a clone, it will check the repository status and most probably you'll find out that your repository is in ""Fetch required state"". 
+Indeed "Fetch required" means that your image was built from a commit that cannot be found in your repository. 
+In other words, we need to update your repository, doing a fetch it will update your repository. 
+
+To solve again, launch the repair action again. Usually, if you already have all your remotes correctly configured, doing a fetch will put you in a ""Detached Working Copy"" state.
+
+@@note Pro Tip: Instead of doing a simple fetch (second option of the repair) it is quite powerful to create a branch (first option), give it a name like sync, bottom... This branch is pointing to the point where your repository and image are in sync and this is super useful to be able to checkout it later when you want to do multiple PRs on different and unrelated issues. This way you can go back to a sync state in one click and be super productive.
+
+
+!!!! Solving the Detached Working Copy.
+
+""Detached Working Copy"" means that the image commit does not correspond with the repository commit (more details of it in the Glossary). At this point, we need to synchronize both to be able to work.
+
+Most of the times, the easier thing to do in this case is to just create a new branch as suggested in the Pro Tip before. If you plan to only fix on issue and you already know which issue you'll be working on, you can create a branch using the "New branch from issue" option. Otherwise, a nice alternative is to create a temporary branch like temp/synch that you can later on remove.
+
++Solving the detached working copy situation.>file://figures/Contribute4-DetachedWorkingCopy.png|width=65|label=detached+
+
+
+!!! Step 3: Work on your image and push your change
+
+Once you have modifications in your image, it's time to push those changes to your fork and make a pull request. To do that, we enforce the following process:
+
+- you create a local branch for the issue, 
+- you issue a pull request of that issue to the main pharo development branch.
+
+Once you have done and commited all your work, you need to push it and create a pull request. Right click on the repository and go to the Github plugin menu item.
+
+Select the option ""Create pull request"" and select as target branch pharo's development branch.
+
+And issue the pull request!
+
+@note Pro Tip: If your PR fixes the issue, you can put a keyword "fixes #IssueNumber" in the description to automatically close the issue on merge. *https://help.github.com/en/articles/closing-issues-using-keywords*
+
+!!! Step 4: Follow your pull request
+
+If you go to github, you'll see your pull request open and that some checks are running.
+This is always a cool feeling, so enjoy it.
+
++Checking your pull request.>file://figures/Contribution6-pr-checks.png|width=65|label=PRCheck+
+
+!!! Step 5: Once your pull request is integrated
+
+Some cleanups are required:
+- remove your branch from your fork
+- close the issue (this is done automatically if your PR contained "fixes #numberOfIssue")
+
+!!! Why you do not need to resync your fork with the pharo repo?
+
+No, you do not need to explicitly resync your fork. Why? Because when you push your commits, you push also the Pharo commits. But let us look at it in details:
+
+- When you download an image (imagine that this image contains the code of commit3 and that Pharo' repository is at commit5), the repair action will fetch all the commits (up to 5) and put them in your ''local'' repository.
+- When you create your bottom branch (the branch that points to the situation of your image when you downloaded) and later  a child branch containing your fixes (call it myfix), it implies that when you commit your myfix branch, all the commits from myfixes and then from commit3 down to the common ancestor between your fork and your local repository will be pushed back to your ''fork''.
+
+So if you downloaded the latest image (imagine for commit6 and that the pharo repository is at commit6 - yes this is the latest image!) when you push your branch (which here is  child of commit6), automatically all the commits (6 down to the common ancestors between your local repo to your fork) will be pushed to your fork. So your fork will be in sync with Pharo's one.
+
+So each time you work and push to your fork from the latest image, your fork gets updated!
 
 !!! Update your Pharo fork using the command line
 
