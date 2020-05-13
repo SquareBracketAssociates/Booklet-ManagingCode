@@ -472,7 +472,7 @@ someRemote [url] (push)
 ]]]
 
 Existing remotes can then be renamed using the ==git remote rename [old_name] [new_name]==.
-And in case the remote name you wanted to rename does not exist, ==git== will answer you with a falta error.
+And in case the remote name you wanted to rename does not exist, ==git== will answer you with a fatal error.
 
 [[[language=bash
 $ git remote rename someRemote company_remote
