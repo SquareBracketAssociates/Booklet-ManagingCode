@@ -1,6 +1,6 @@
 !! Getting Started with Git
 
-In this chapter we introduce the basics of ==git== and VCSs through guided examples.
+In this chapter we introduce the basics of ==git== and Version Control Systems (VCSs) through guided examples.
 We first start by setting up a repository in a remote server and then load it in our own machine.
 We then show how we can inspect the state of our repository and save our files into it.
 Once our changes are saved, we show how we can push our changes to our remote repository in a distant server.
@@ -9,19 +9,17 @@ This chapter will assume you have ==git== already installed in your machine, and
 %For users of other systems such as Windows, an appendix at the end will give some details on different setups and installation procedures.
 %stef
 Moreover, you will see that we will approach ==git== with the ''command-line''.
-Don't be affraid if you've never used it before, it is not as difficult as it may seem and you will get used to it.
+Don't be afraid if you've never used it before, it is not as difficult as it may seem and you will get used to it.
 There is always a first time!
 Also, we promise you that everything you learn in here can be applied to, and will actually help you better understand, non command-line tools.
 
-+A Repository as a timeline of changes.>file://figures/history-versions.pdf|width=55|label=history_versions+
++A repository as a timeline of changes.>file://figures/history-versions.pdf|width=55|label=history_versions+
 
 !!! Creating a Repository
 
 A ==git== repository is a store of files and directories.
 The big difference between a ==git== repository and a simple filesystem is that the changes we make are stored as events, like a timeline (Figure *@history_versions*).
 Git not only stores such a timeline but also allows us to query it, undo some of its changes, and so on.
-
-
 
 Before working with such a history/repository we need to set it up.
 Fortunately, setting up a ==git== repository is much lightweight than setting up a database repository.
@@ -32,22 +30,22 @@ Let's proceed to create a repository in an online hosting service such as GitHub
 On GitHub use the ''New Repository'' action. Figure *@new_repo_github* shows the kind of form GitHub 
 provides to its users to create a new repository.
 
-+Creating a New Repository on Github.>file://figures/new-repository-github.png|width=65|label=new_repo_github+
++Creating a new repository on Github.>file://figures/new-repository-github.png|width=65|label=new_repo_github+
 
 Following the form/wizard will eventually get you a running repository on-line.
 You will be most probably then redirected to your repository page.
-Figure *@repository_page* shows how such a page looks in GitHub.
+Figure *@repository_page* shows how such a page looks like in GitHub.
 
-+A Repository Page for a project called ""test"" in GitHub.>file://figures/GitHub_repository_page.png|width=65|label=repository_page+
++Repository page for a project called ""test"" in GitHub.>file://figures/GitHub_repository_page.png|width=65|label=repository_page+
 
 We are almost set to work from the command line now.
 However, we need to set-up our mind around a couple of extra concepts.
 The repository we just created does not exist in our machine.
-Actually, it is stored in some server maintained by github/gitlab.
+Actually, it is stored in some server maintained by GitHub/GitLab.
 To interact with this repository we will need a network connection.
 We will call this repository, living in a remote server, a ""remote repository"".
 
-!!! ==git clone==
+!!! git clone
 @cloning
 
 Git, constrastingly to other VCSs, is a distributed VCS.
@@ -57,7 +55,6 @@ Eventually, we will synchronize the state between our ""local"" repository with 
 This is what makes possible the disconnected or off-line workflow that people often praise in ==git==.
 
 +Basic git architecture: You change the files in your working copy, commit changes to local repository and synchronize your local repository with remote ones.>file://figures/commit_in_workflow2.pdf|width=90|label=commit_in_workflow-basic+
-
 
 Making a local copy of a remote repository is such a common task that ==git== has a dedicated command for it, the ==git clone [url]== command.
 The ==git clone== command receives as argument the URL of our repository, that we can get from our repository page.
@@ -82,14 +79,14 @@ Resolving deltas: 100% (4063/4063), done.
 Checking connectivity... done.
 ]]]
 
-When the command finishes, ==git== is done creating a directory named as your repository (your_repo_name).
+When the command finishes, ==git== is done creating a directory named as your repository (your_project_name).
 We will call this directory the ""working directory"" as it is where we will work and interact with our repository.
 The working directory, with all the files and directories it contains, is managed by ==git== and linked to our repository.
 Do not worry, there is nothing else you need to do to keep this link, ==git== will automatically track your changes for you.
 
 You are now ready to go and start working on your project.
 
-!!! Making Changes: How does ==git== track my Changes?
+!!! Making changes: How does ==git== track my changes?
 
 Let's now dive in our working directory and start making changes to it.
 We'll for example create a file called ==project.txt==, then open it with a text editor and add some lines to it.
@@ -198,7 +195,7 @@ No extra information is tracked for them.
 In other words, we cannot just store directories into ==git==.
 And in case we want to do it for some reason, we need to put files into them.
 
-!!! Commiting your Changes
+!!! Commiting your changes
 
 We would like now to save our changes in our ==git== repository.
 This way, if anything happens, we can always recover our work up to this point.
@@ -233,8 +230,7 @@ Partly because Git's philosophy is to ask the user explicitly what to do, which 
 Instead, ==git== requires us to add the files we want to commit to a list of ''added'' files, also called in ==git== terminology the ''staging area'', and equivalent to your shopping list.
 Once our staging area is full with the changes we want to commit, we can commit such changes using the ==git commit== command.
 
-
-!!!! A First Commit
+!!!! A first commit
 Adding changes to your staging area is done through the ==git add [file]== command.
 Let's proceed to add our changes and see what is the status of our repository afterwards.
 
@@ -270,7 +266,7 @@ On branch master
 nothing to commit, working directory clean
 ]]]
 
-!!!! Add then Commit, all over again
+!!!! Add then commit, all over again
 
 If we repeat the process and we change one of our existing files, we will see something interesting.
 Commiting our changes in a file we added before requires that we do a ==git add [file]== and ==git commit== again on the same file, even if ==git== already knew about it.
@@ -322,9 +318,6 @@ Keeping your changes safe means to synchronize them from time to time with your 
  ==git== takes the perspective that we are located in our local repository.
 We bring other's changes by ''pulling'' them from remote repositories to our local repository.
 We send our changes by ''pushing'' them from our local repositories to one or many remote repositories.
-
-
-
 
 !!!! Getting Remote Changes with ==git pull==
 @pulling_basic
