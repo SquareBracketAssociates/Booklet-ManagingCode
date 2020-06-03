@@ -118,7 +118,8 @@ It comes the time for every woman/man to make mistakes and want to discard them.
 Doing so may be dangerous, since once discarded you will not able to recover your changes.
 It is however possible to instruct ==git== to do so.
 For it, there are two ==git== comments that will perform the task for you and when combined they will completely discard every dirty file and directory in your repository:
-==git reset== and ==git clean==.
+==git reset== and ==git clean==. ==commit_id== is the commit where you want to be. 
+
 
 [[[language=bash
 $ git reset --hard <commit_id>
@@ -126,6 +127,13 @@ $ git clean -df
 ]]]
 
 The ==\-d== option removes untracked directories in addition to untracked files, while the  ==\-f== option is a shortcut ==\-\-force==, forcing the corresponding deletions.
+
+If you want to just revert the last commit you can also use
+
+[[[language=bash
+$ git reset --hard HEAD~1
+$ git clean -df
+]]]
 
 The reason for needing two commands instead of one relies on the fact that ==git== has several staging areas (such as the ones used to keep the tracked files), which we usually would like to clean when we discard the repository. Of course, experienced readers may search why they would need both in Git's documentation.
 
