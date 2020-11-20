@@ -1,32 +1,29 @@
 !! Preamble
-Git is the defacto standard distributed source versioning system. Even though Pharo got its own distributed versioning 
-system during more than 12 years. It lacked the maturity of git and one key features: branches.
-This is why since Pharo 6.0 it was clear that Pharo needed to have support for git. 
-Pharo started to support git since Pharo 6.0. Pharo 7.0 saw a major version since all its code and development migrated to git.
+Git is the de facto standard distributed source versioning system. Even though Pharo had its own distributed versioning 
+system for over 12 years, it lacked the maturity of git and one key feature: branches.
+It has been clear for years that git support was needed, and work finally began in Pharo 6.0, with a full commitment when Pharo 7.0 migrated all its code and development to git.
 
-However managing Pharo with git is not just a matter of saving code into files and versioning. 
-Any fool can do that in one afternoon. Pharo has a powerful reflective layer and execution change the objects that represent code 
-itself. Therefore Pharo as a living system can be in a different state than the file checkouted from a git repository. 
-From this we can imagine many complex scenarios that even smart programmers would have headaches to understand.
+However, managing Pharo with git is not just a matter of saving code into versioned files. 
+Any fool can do that in one afternoon! The real challenge is accounting for Pharo's powerful reflective layer and ability to change at runtime the very objects representing the code itself. As a living system, Pharo is often in a different state than the file(s) checked out from a git repository. 
+As you might imagine, this tension could lead to many complex scenarios that might stump even the smartest programmers.
 
-Therefore the Pharo consortium (E. Lorenzano, N. Passerini, G. Polito and P. Tesone) developed an advanced tool to help managing the live programming aspect of Pharo and the static perspective that file-based versioning systems such git have of the reality. 
-Iceberg not only supports the management of large projects (such as Pharo itself with more than 600 packages and a couple of thousand classes)
-but it helps us (the developers) to understand the situation between our image, the files on our disc and the multiple branches
-and remote repositories that the git model offers. It offers strategies to address problems we may face. 
+Therefore, the Pharo consortium (E. Lorenzano, N. Passerini, G. Polito and P. Tesone) developed Iceberg, an advanced tool to help reconcile the live programming ecosystem of Pharo with the static perspective of git (and other file-based versioning systems). 
+Iceberg not only supports the management of large projects (such as Pharo itself with more than 600 packages and a few thousand classes),
+but helps us (the developers) to understand the relationship between our image, the files on our disc and git's multiple branches
+and remote repositories, offering strategies to address typical problems we may face. 
 
-Iceberg is a tool to manage git projects from Pharo. It makes the experience of managing code really smooth.
-A major effort went into the version of Iceberg present in Pharo 7.0. 
-We are using the version of Iceberg available in Pharo 8.0.
+Iceberg is a tool to manage git projects from inside Pharo, making the experience of managing code really smooth.
+A major effort went into Iceberg in Pharo 7.0. Building on this foundation, Pharo 8.0 shipped with an Iceberg honed by real-world experience, and which is the target version of this document.
 
-This document is under writing but we decided to release before its completion 
-because managing code can be a large topic when we start to discuss workflow and process. 
+This document is a draft under active development, but we decided to release it before its completion 
+because it is needed: managing code can be a large topic when we include workflow and process. 
 
-The book is structured for now in two main parts
+The book is structured for now in two main parts:
 # Understanding from the command-line
-# Managing Pharo code with Iceberg.
+# Managing Pharo code with Iceberg
 
 
-The authors want to thank Sean de Nigris, Quentin Ducasse and Stefan Eggermont for the reviews and copy-edit of the early version. We also thank Peter Uhnak for his first blog on publishing Pharo code on Github.
+The authors want to thank Sean DeNigris, Quentin Ducasse and Stefan Eggermont for the reviews and copy-edit of the early version. We also thank Peter Uhnak for his first blog on publishing Pharo code on Github.
 We thank Iona Thomas for the enhancements of Iceberg. 
 
 
