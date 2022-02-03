@@ -67,7 +67,7 @@ StartupPreferencesLoader default executeAtomicItems: {
             IceCredentialsProvider sshCredentials
                 username: 'git';
                 publicKey: 'Path to your public rsa.pub file (public key)';
-                privateKey: 'Path to your public rsa file (private key)'."
+                privateKey: 'Path to your private rsa file (private key)'."
             IceCredentialStore current
                 storeCredential: (IceTokenCredentials new
                     username: 'your-github-username';
