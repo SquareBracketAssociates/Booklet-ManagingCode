@@ -46,7 +46,8 @@ Once you have pushed you can see that you have one remote as shown in Figure *@P
 !!! Configuring automatically Pharo to commit in HTTPS/SSH
 
 With recent version of github, you should use a token to connect using HTTPS to be able to commit to your repository.
-Now you can configure Pharo to store your token as well your github account authentification. 
+Now you can configure Pharo to store your token as well your github account authentification using startup preferences.
+
 In addition you can configure Pharo to point to your private and public SSH key as follows: 
 
 [[[
@@ -60,17 +61,17 @@ StartupPreferencesLoader default executeAtomicItems: {
             Iceberg enableMetacelloIntegration: true.
             IceCredentialStore current
                     storeCredential: (IcePlaintextCredentials new
-                    username: 'xxxxx';
-                    password: 'xxxx';
+                    username: 'xxJohnDoe';
+                    password: 'xxJohnDoePassword';
                     host: 'github.com';
                     yourself).
             IceCredentialsProvider sshCredentials
                 username: 'git';
                 publicKey: 'Path to your public rsa.pub file (public key)';
-                privateKey: 'Path to your private rsa file (private key)'."
+                privateKey: 'Path to your private rsa file (private key)'.
             IceCredentialStore current
                 storeCredential: (IceTokenCredentials new
-                    username: 'your-github-username';
+                    username: 'xxJohnDoe';
                     token: 'magictoken here ';
                     yourself) 
                 forHostname: 'github.com'.
