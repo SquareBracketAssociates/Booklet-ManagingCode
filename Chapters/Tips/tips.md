@@ -1,1 +1,90 @@
-## Tips and Tricks@cha:tipsThis chapter contains some simple recipe-oriented frequently asked questions. If you have some more please send them to us or even better, present a _Pull Request_.### How to use SSH keysIn case SSH is not set up \(and you will notice as soon as you try to clone a project or commit a change to one\), there are some simple basic points to be able to use SSH with github.You can add SSH keys by following these steps \(on Windows, if you want a nice command line environment, install [http://mingw.org/wiki/msys](http://mingw.org/wiki/msys)\):#### Generate a key pairTo do this, execute the command:```ssh-keygen -t rsa```It will generate a private and a public key \(on a unix-based installation in the directory `.ssh`\).You should copy your `id_rsa.pub` key to your github account.Keep the keys in a safe place.On Windows, you can follow instructions on how to generate your keys at [http://guides.beanstalkapp.com/version-control/git-on-windows.html#installing-ssh-keys](http://guides.beanstalkapp.com/version-control/git-on-windows.html#installing-ssh-keys).#### Add the key to your ssh agentIn linux, execute in your shell:```ssh-add ~/.ssh/id_rsa```In OSX, execute in your shell:```ssh-add -K ~/.ssh/id_rsa```For both OSX and linux you can add such lines to your `.bash_profile` \(or the one corresponding to your shell installation such as `.zshrc`\) so they are automatically executed on each new shell session.### How to contribute back to a projectYou cloned a project from a Github repository and you don't have any write permissions. You made some changes, and you'd like to send a pull-request to it. What is the "Iceberg way" of doing it?Manually you can fork the project on Github, add a remote to the local repo, push the changes to this new remote and then create the pull request on Github.With Iceberg you can do the same since Iceberg follows the git way:1. Create fork on Github1. Add a repository for this project  to Iceberg \(Repositories context menu then "Repository" and then `"+ Repository"`1. Create an issue branch with Iceberg \(Repositories context menu then GitHub then Create new branch for issue\).1. Commit your changes with Iceberg.1. Push your change to your fork from Iceberg.1. Create pull request from Iceberg \(Repositories context menu then GitHub then Create Pull Request\)### How to distribute your changes in different branchesWith Iceberg we can chose the packages, classes or methods when we save. Imagine that you are in branch `odd` and you code`m1`, `m2`, `m3`, `m4`. Then later you realize too late that it would be great to extract `m2` and `m4` in another branch because you would like to merge it in another branch called `even`.To commit changes into different branches, you must change your branch. Because a _commit_ always modifies the current branch.When you change  a branch, there is first a preview. In the preview, you  have a diff and  you have acombo-box to select a checkout strategy:![Checkout choices.](figures/CheckoutChoices.png width=75&label=CheckoutChoices)- The default checkout strategy is to reload the packages, this will override any local changes you had.- The last one is to not load any packages: in other words, change the branch but do not touch my image.So one way to do save your changes in separate branch is to:1. Commit in branch odd by selecting a subset of changes1. Change to branch even using the "Do not checkout" strategy1. Commit in branch even a subset of changes
+## Tips and Tricks
+
+@cha:tips
+
+This chapter contains some simple recipe-oriented frequently asked questions. If you have some more please send them to us or even better, present a _Pull Request_.
+
+### How to use SSH keys
+
+
+In case SSH is not set up \(and you will notice as soon as you try to clone a project or commit a change to one\), there are some simple basic points to be able to use SSH with github.
+
+You can add SSH keys by following these steps \(on Windows, if you want a nice command line environment, install [http://mingw.org/wiki/msys](http://mingw.org/wiki/msys)\):
+
+#### Generate a key pair
+
+
+To do this, execute the command:
+
+```
+ssh-keygen -t rsa
+```
+
+
+It will generate a private and a public key \(on a unix-based installation in the directory `.ssh`\).
+You should copy your `id_rsa.pub` key to your github account.
+Keep the keys in a safe place.
+
+On Windows, follow instructions on how to generate your keys for your given version of Windows.
+
+#### Add the key to your ssh agent
+
+
+In linux, execute in your shell:
+```
+ssh-add ~/.ssh/id_rsa
+```
+
+
+In OSX, execute in your shell:
+```
+ssh-add -K ~/.ssh/id_rsa
+```
+
+
+For both OSX and linux you can add such lines to your `.bash_profile` \(or the one corresponding to your shell installation such as `.zshrc`\) so they are automatically executed on each new shell session.
+
+
+### How to contribute back to a project
+
+
+You cloned a project from a Github repository and you don't have any write permissions. You made some changes, and you'd like to send a pull-request to it. What is the "Iceberg way" of doing it?
+
+Manually you can fork the project on Github, add a remote to the local repo, push the changes to this new remote and then create the pull request on Github.
+
+With Iceberg you can do the same since Iceberg follows the git way:
+
+1. Create fork on Github
+1. Add a repository for this project  to Iceberg \(Repositories context menu then "Repository" and then `"+ Repository"`
+1. Create an issue branch with Iceberg \(Repositories context menu then GitHub then Create new branch for issue\).
+1. Commit your changes with Iceberg.
+1. Push your change to your fork from Iceberg.
+1. Create pull request from Iceberg \(Repositories context menu then GitHub then Create Pull Request\)
+
+
+
+### How to distribute your changes in different branches
+
+
+With Iceberg we can chose the packages, classes or methods when we save. 
+Imagine that you are in branch `odd` and you code
+`m1`, `m2`, `m3`, `m4`. 
+Then later you realize too late that it would be great to extract `m2` and `m4` in another branch because you would like to merge it in another branch called `even`.
+
+To commit changes into different branches, you must change your branch. Because a _commit_ always modifies the current branch.
+
+When you change  a branch, there is first a preview. In the preview, you  have a diff and  you have a
+combo-box to select a checkout strategy:
+
+![Checkout choices.](figures/CheckoutChoices.png width=75&label=CheckoutChoices)
+
+- The default checkout strategy is to reload the packages, this will override any local changes you had.
+- The last one is to not load any packages: in other words, change the branch but do not touch my image.
+
+
+So one way to do save your changes in separate branch is to:
+1. Commit in branch odd by selecting a subset of changes
+1. Change to branch even using the "Do not checkout" strategy
+1. Commit in branch even a subset of changes
+
+

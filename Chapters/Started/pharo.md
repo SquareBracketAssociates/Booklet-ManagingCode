@@ -49,15 +49,14 @@ Or you can browse the file server and find the files suiting your environment.
 ### Fork the Pharo repository
 
 
-All changes you'll do will be versionned in _your own_ fork of the Pharo repository. Then, from your fork you'll be able to issue pull requests to Pharo, where they will be reviewed, and luckily, integrated.
+All changes you'll make will be versioned in _your own_ fork of the Pharo repository. Then, from your fork you'll be able to issue pull requests to Pharo, where they will be reviewed, and luckily, integrated.
 
-Go to Pharo github's repository and click on the fork button on the top right. Yes, this means that you'll need a github account to contribute to Pharo, yes.
+Go to Pharo GitHub's repository and click on the fork button on the top right. Yes, this means that you'll need a github account to contribute to Pharo, yes.
 
 ### Setup Iceberg
 
 
 To be able to contribute to Pharo, you need a Pharo git repository.
-
 
 
 You will need to set a valid set of credentials in your system to be able to work with Pharo. In case you use SSH (the default way), you will need to make sure those keys are available but you can start by using HTTPS since this is easier.
@@ -81,12 +80,10 @@ Execute in your shell:
 ```
 
 
-Both for OSX and linux you can add such lines in your `.bash_profile` (or the one corresponding to your shell installation) so they are automatically executed on each new shell session.
+Both for OSX and Linux you can add such lines in your `.bash_profile` (or the one corresponding to your shell installation) so they are automatically executed on each new shell session.
 
 #### Windows setting credentials
-
-in windows is more complicated, you may need to generate a pair of keys (that needs to be uploaded to your account on github).
-You can follow instructions on how to generate your keys [http://guides.beanstalkapp.com/version-control/git-on-windows.html\#installing-ssh-keys](http://guides.beanstalkapp.com/version-control/git-on-windows.html\#installing-ssh-keys).
+Windows is more complicated, you may need to generate a pair of keys (that needs to be uploaded to your account on Git Hub). Please check online resources for the current Windows version you are using.
 
 
 #### Pharo side settings
@@ -167,7 +164,7 @@ Select the option **Create pull request** and select as target branch pharo's de
 
 And issue the pull request!
 
-!!note Pro Tip: If your PR fixes the issue, you can put a keyword "fixes #IssueNumber" in the description to automatically close the issue on merge. [https://help.github.com/en/articles/closing-issues-using-keywords](https://help.github.com/en/articles/closing-issues-using-keywords)
+!!note Pro Tip: If your PR fixes the issue, you can put a keyword "fixes #IssueNumber" in the description to automatically close the issue on merge. 
 
 ### Step 3: Follow your pull request
 
@@ -196,7 +193,7 @@ No, you do not need to explicitly resync your fork. Why? Because when you push y
 - When you create your bottom branch (the branch that points to the situation of your image when you downloaded) and later  a child branch containing your fixes (call it myfix), it implies that when you commit your myfix branch, all the commits from myfixes and then from commit3 down to the common ancestor between your fork and your local repository will be pushed back to your _fork_.
 
 
-So if you downloaded the latest image (imagine for commit6 and that the pharo repository is at commit6 - yes this is the latest image!) when you push your branch (which here is  child of commit6), automatically all the commits (6 down to the common ancestors between your local repo to your fork) will be pushed to your fork. So your fork will be in sync with Pharo's one.
+So if you downloaded the latest image (imagine for commit6 and that the pharo repository is at commit6 - yes this is the latest image!) when you push your branch (which here is a child of commit6), automatically all the commits (6 down to the common ancestors between your local repo to your fork) will be pushed to your fork. So your fork will be in sync with Pharo's one.
 
 So each time you work and push to your fork from the latest image, your fork gets updated!
 
