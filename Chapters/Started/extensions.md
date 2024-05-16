@@ -5,7 +5,7 @@ Versioning code is just the first part of making sure that you and others can re
 In this chapter we describe how to define a baseline, a project map that you will use to define dependencies
 within your project and dependencies to other projects.
 We also show how to add a good `.gitignore` file.
-In the next chapter we will show how to configure your project to get more out of the services offered within the Github ecosystem such as Travis-ci to execute automatically your tests.
+In the next chapter, we will show how to configure your project to get more out of the services offered within the GitHub ecosystem such as Travis-ci to execute automatically your tests.
 
 We start by showing you how you can commit your code if you did not create your remote repository first.
 
@@ -14,9 +14,9 @@ We start by showing you how you can commit your code if you did not create your 
 ### What if I did not create a remote repository
 
 
-In the previous chapter we started by creating a remote repository on Github.
-Then we asked Iceberg to add a project by cloning it from Github.
-Now you may ask yourself what is the process to publish first your project locally without a pre-existing repository. This is actually simple.
+In the previous chapter, we started by creating a remote repository on GitHub.
+Then we asked Iceberg to add a project by cloning it from GitHub.
+Now you may ask yourself about the process to publish first your project locally without a pre-existing repository. This is actually simple.
 
 #### Create a new repository.
 
@@ -32,7 +32,7 @@ Figure *@OpeningRepositoryBrowser@* shows the repository browser on our project.
 ![Opening the repository browser let you add and browse branches as well as remote repositories.](figures/S13-OpeningRepository.png width=75&label=OpeningRepositoryBrowser)
 
 
-Pressing on the 'Add remote' iconic button adds a remote by filling the needed information that you can find in your Github project. Figure *@OpeningRepositoryBrowser@* shows it for the sample project using SSH and  Figure *@OpeningRepositoryBrowser2@* for HTTPS.
+Pressing on the 'Add remote' iconic button adds a remote by filling the needed information that you can find in your GitHub project. Figure *@OpeningRepositoryBrowser@* shows it for the sample project using SSH and  Figure *@OpeningRepositoryBrowser2@* for HTTPS.
 
 ![Adding a remote using the _Repository_ browser of your project (SSH version).](figures/S14-AddingRemote.png width=75&label=OpeningRepositoryBrowser)
 
@@ -146,7 +146,7 @@ Metacello new
 
 
 For projects with metadata, like the one we just created, that's it.
-Notice that we not only mention the Github pass but also added the code folder (here `src`).
+Notice that we not only mention the GitHub pass but also added the code folder (here `src`).
 
 ### \[Optional\] Add a nice .gitignore file
 
@@ -181,7 +181,7 @@ github-*.zip
 
 
 As `git` is a distributed versioning system, you need a local clone of your repository.
-In general, you edit your working copy located on your hard drive and you commit to your local clone, and from there you push to remote repositories like Github. We explain here the specificity of managing Pharo with git.
+In general, you edit your working copy located on your hard drive and you commit to your local clone, and from there you push to remote repositories like GitHub. We explain here the specificity of managing Pharo with git.
 
 When coding in Pharo, you should understand that you are not directly editing your local working copy, you are modifying objects that represent classes and methods that are living in the Pharo environment.
 Therefore it is like you have a double working copy: Pharo itself and the `git` working copy.

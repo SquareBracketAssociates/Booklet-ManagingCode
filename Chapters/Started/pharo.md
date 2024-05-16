@@ -3,7 +3,7 @@
 
 Pharo itself is hosted on GitHub under [http://www.github.com/pharo-project/](http://www.github.com/pharo-project/). All the development of the core system is done via 
 this code repository. 
-You can contribute to Pharo itself fixing some issues.
+You can contribute to Pharo itself by fixing some issues.
 The official and unique way of submitting code is by doing a _Pull Request_ from your fork to the official repository.
 
 
@@ -15,8 +15,8 @@ You can see the issues on the Pharo Github repository: [http://www.github.com/ph
 The general process is summarised by the following steps:
 
 1. Download the latest version (this is important since I will make sure that you do not have to resync your fork).
-1. Use repair (it will fetch some commits and make sure that your local repository is in sync the remotes).
-1. Use repair (and create a branch let us called Bottom-123 that will point to the commits of your image).
+1. Use repair (it will fetch some commits and make sure that your local repository is in sync with the remotes).
+1. Use repair (and create a branch -- let us called it Bottom-123 -- that will point to the commits of your image).
 1. Create a new branch for the issue you want to work on.
 1. Code, then commit, then push to YOUR fork
 1. Issue a PullRequest from your fork to Pharo
@@ -27,24 +27,22 @@ The general process is summarised by the following steps:
 ### Step 0: Setting up the development environment
 
 
-Download and launch latest Pharo version:
+Download and launch the latest Pharo version:
 
-The recommended way to download Pharo is to use the Pharo launcher, which you can get from Pharo download's page. Otherwise, if you have a nice command line environment (wget, readline, bash), download latest development pharo using zeroconf.
+The recommended way to download Pharo is to use the Pharo launcher, which you can get from Pharo download's page. 
 
-!!note Pro tip: If you're on windows and you want a nice command line environment, install msys
+!!note Pro tip: If you're on Windows and you want a nice command line environment, install msys
+
+else you can try the following patterned expression:
 
 ```
-wget -O- get.pharo.org/64/90+vm | bash
+curl https://get.pharo.org/[32/64]/[version]+vm | bash
 ./pharo-ui Pharo.image
 ```
 
+If you don't have a command line environment, you can download both image and vm manually from the following links for example: [http://files.pharo.org/get-files/120/]([http://files.pharo.org/get-files/120/)
 
-If you don't have a command line environment, you can download both image and vm manually from the following links for windows for example:
-
-- Image: http://files.pharo.org/get-files/90/pharo.zip
-- VM: http://files.pharo.org/get-files/90/pharo-win-stable.zip
-
-Or you can browse the file server and find the files suiting your environment.
+Browse the file server and find the files that suit your environment.
 
 ### Fork the Pharo repository
 
@@ -123,8 +121,8 @@ The repair menu item/button will propose you some solutions.
 
 And clicking on the **Repair repository** menu will show you the repair view, showing an explanation of the current situation and some proposed solutions:
 
-- Locate this repository in your file system: if you have already cloned your pharo fork repository on your disk you can simply point to it. Pharo will synchronise it as explained in the next steps. 
-- Clone again this repository: you can clone again your Pharo fork from github to your local disc. Again your fork may be desynchronised from the actual Pharo version but Iceberg will manage it too. 
+- Locate this repository in your file system: if you have already cloned your pharo fork repository on your disk you can simply point to it. Pharo will synchronize it as explained in the next steps. 
+- Clone again this repository: you can clone again your Pharo fork from GitHub to your local disc. Again your fork may be desynchronized from the actual Pharo version but Iceberg will manage it too. 
 
 
 So depending on the action you chose: you can then choose to search in your disk for an existing clone or to clone your forked Pharo repository.
@@ -145,7 +143,7 @@ To solve again, launch the repair action again. Usually, if you already have all
 
 **Detached Working Copy** means that the image commit does not correspond with the repository commit (more details of it in the Glossary). At this point, we need to synchronize both to be able to work.
 
-Most of the times, the easier thing to do in this case is to just create a new branch as suggested in the Pro Tip before. If you plan to only fix on issue and you already know which issue you'll be working on, you can create a branch using the "New branch from issue" option. Otherwise, a nice alternative is to create a temporary branch like temp/synch that you can later on remove.
+Most of the time, the easier thing to do in this case is to just create a new branch as suggested in the Pro Tip before. If you plan to only fix on issue and you already know which issue you'll be working on, you can create a branch using the "New branch from issue" option. Otherwise, a nice alternative is to create a temporary branch like temp/synch that you can later on remove.
 
 ![Solving the detached working copy situation.](figures/Contribute4-DetachedWorkingCopy.png width=65&label=detached)
 
@@ -155,12 +153,12 @@ Most of the times, the easier thing to do in this case is to just create a new b
 Pick up or create an issue and fix it. Once you have modifications in your image, it's time to push those changes to _your_ fork and make a pull request from your fork to the main Pharo repository. To do that, we enforce the following process:
 
 - you create a local branch for the issue, 
-- you issue a pull request of that issue to the main pharo development branch.
+- you issue a pull request of that issue to the main Pharo development branch.
 
 
-Once you have done and commited all your work, you need to push it and create a pull request. Right click on the repository and go to the Github plugin menu item.
+Once you have done and committed all your work, you need to push it and create a pull request. Right click on the repository and go to the Github plugin menu item.
 
-Select the option **Create pull request** and select as target branch pharo's development branch.
+Select the option **Create pull request** and select as target branch Psssharo's development branch.
 
 And issue the pull request!
 

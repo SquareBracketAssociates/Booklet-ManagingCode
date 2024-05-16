@@ -45,6 +45,51 @@ ssh-add -K ~/.ssh/id_rsa
 For both OSX and linux you can add such lines to your `.bash_profile` \(or the one corresponding to your shell installation such as `.zshrc`\) so they are automatically executed on each new shell session.
 
 
+### Configuring automatically Pharo to commit in HTTPS/SSH
+
+With recent version of github, you should use a token to connect using HTTPS to be able to commit to your repository.
+Now you can configure Pharo to store your token as well your github account authentification using startup preferences.
+
+In addition you can configure Pharo to point to your private and public SSH key as follows: 
+
+```
+StartupPreferencesLoader default executeAtomicItems: {
+    StartupAction 
+        name: 'Logo' 
+        code: [ PolymorphSystemSettings showDesktopLogo: false] .
+    StartupAction 
+        name: 'Git Settings' 
+        code: [ 
+            Iceberg enableMetacelloIntegration: true.
+            IceCredentialStore current
+                    storeCredential: (IcePlaintextCredentials new
+                    username: 'xxJohnDoe';
+                    password: 'xxJohnDoePassword';
+                    host: 'github.com';
+                    yourself).
+            IceCredentialsProvider sshCredentials
+                username: 'git';
+                publicKey: 'Path to your public rsa.pub file (public key)';
+                privateKey: 'Path to your private rsa file (private key)'.
+            IceCredentialStore current
+                storeCredential: (IceTokenCredentials new
+                    username: 'xxJohnDoe';
+                    token: 'magictoken here ';
+                    yourself) 
+                forHostname: 'github.com'.
+            ]. 
+}
+```
+
+
+
+You should place this file in the preference folder that depends on your OS. 
+You can find this place by using the `Startup` menu. Note that you can configure this 
+for all or one specific version of Pharo.
+
+
+
+
 ### How to contribute back to a project
 
 
@@ -64,7 +109,6 @@ With Iceberg you can do the same since Iceberg follows the git way:
 
 
 ### How to distribute your changes in different branches
-
 
 With Iceberg we can chose the packages, classes or methods when we save. 
 Imagine that you are in branch `odd` and you code

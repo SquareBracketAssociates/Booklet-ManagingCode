@@ -254,7 +254,6 @@ Connect yourself to your Github settings and go to the "SSH and GPG keys" menu. 
 
 ### Rewriting the History 
 
-
 Many times it happens that we accidentally commit something wrong.
 Maybe we wanted to commit more or less things, maybe a completely different content, or we did a mistake in the commit's message. In these cases, we can rewrite Git's history, e.g, undo our current commit and go back to the previous commit, or rewrite the current commit with some new properties.
 
